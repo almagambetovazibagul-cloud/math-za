@@ -1,0 +1,1900 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#0b0b2a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Лето с математикой">
+<title>☀️ Лето с математикой 2026</title>
+<link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>☀️</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fraunces:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-1:#0b0b2a; --bg-2:#1a0b3a; --bg-3:#3a1a5e;
+  --ink:#f6f1ff; --ink-soft:rgba(246,241,255,.72); --ink-mute:rgba(246,241,255,.5);
+  --primary:#ffd166; --primary-2:#ff9f6b; --accent:#7cf0ff; --accent-2:#b693ff;
+  --good:#7af0a8; --bad:#ff7a8a; --warn:#ffb86b;
+  --glass:rgba(255,255,255,.08); --glass-2:rgba(255,255,255,.15);
+  --glass-3:rgba(255,255,255,.04);
+  --stroke:rgba(255,255,255,.12); --stroke-2:rgba(255,255,255,.20);
+  --shadow:0 20px 60px -20px rgba(0,0,0,.6), 0 2px 0 rgba(255,255,255,.06) inset;
+  --shadow-glass:0 8px 32px rgba(0,0,0,.3);
+  --grad-warm:linear-gradient(135deg,#ffd166,#ff9f6b 55%,#ff6b9d);
+  --grad-night:radial-gradient(1200px 800px at 80% -10%,#3a1a5e 0%,transparent 60%),
+               radial-gradient(900px 700px at 0% 100%,#0d2a4a 0%,transparent 60%),
+               linear-gradient(180deg,#070718 0%,#0b0b2a 60%,#1a0b3a 100%);
+  --grad-day:radial-gradient(1200px 800px at 80% -10%,#ffe9a8 0%,transparent 60%),
+             radial-gradient(900px 700px at 0% 100%,#bde4ff 0%,transparent 60%),
+             linear-gradient(180deg,#aee1ff 0%,#dff1ff 55%,#fff4d6 100%);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:'Nunito',system-ui,sans-serif;
+  background:var(--grad-night); color:var(--ink);
+  transition:background 1.2s ease, color 1.2s ease;
+  min-height:100vh; overflow-x:hidden;
+  -webkit-tap-highlight-color:transparent;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  touch-action: manipulation;
+}
+body.day{background:var(--grad-day); color:#23314d}
+body.day{ --ink:#23314d; --ink-soft:rgba(35,49,77,.75); --ink-mute:rgba(35,49,77,.55);
+  --glass:rgba(255,255,255,.55); --glass-2:rgba(255,255,255,.75);
+  --glass-3:rgba(255,255,255,.30);
+  --stroke:rgba(35,49,77,.12); --stroke-2:rgba(35,49,77,.20);
+  --shadow:0 20px 60px -22px rgba(45,80,160,.35), 0 2px 0 rgba(255,255,255,.8) inset;
+  --shadow-glass:0 8px 32px rgba(45,80,160,.15);
+}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+input,textarea{font:inherit;color:inherit}
+h1,h2,h3,h4{font-weight:800;line-height:1.2}
+.serif{font-family:'Fraunces',serif;font-weight:800;letter-spacing:-.02em}
+
+.sky{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.stars{position:absolute;inset:0;background-image:
+  radial-gradient(1.5px 1.5px at 12% 18%,#fff,transparent 60%),
+  radial-gradient(1px 1px at 30% 38%,#fff,transparent 60%),
+  radial-gradient(2px 2px at 70% 22%,#fff,transparent 60%),
+  radial-gradient(1px 1px at 85% 60%,#fff,transparent 60%),
+  radial-gradient(1.5px 1.5px at 22% 78%,#fff,transparent 60%),
+  radial-gradient(1px 1px at 60% 88%,#fff,transparent 60%),
+  radial-gradient(1.5px 1.5px at 92% 35%,#fff,transparent 60%),
+  radial-gradient(1px 1px at 48% 12%,#fff,transparent 60%),
+  radial-gradient(1px 1px at 5% 55%,#fff,transparent 60%),
+  radial-gradient(1.5px 1.5px at 75% 78%,#fff,transparent 60%);
+  opacity:.6;animation:twinkle 6s ease-in-out infinite;
+  transition:opacity 1.2s ease, visibility 1.2s ease}
+@keyframes twinkle{0%,100%{opacity:.35}50%{opacity:.75}}
+.moon{position:absolute;border-radius:50%;
+  background:radial-gradient(circle at 30% 30%,#fffbe8,#ffe7a3 45%,#d9a85a 100%);
+  box-shadow:0 0 60px rgba(255,225,150,.5),inset -14px -14px 30px rgba(0,0,0,.25);
+  animation:float 14s ease-in-out infinite;
+  transition:opacity 1.2s ease, visibility 1.2s ease}
+.moon.m1{width:160px;height:160px;top:-30px;right:-30px}
+.moon.m2{width:90px;height:90px;top:18%;left:-25px;
+  background:radial-gradient(circle at 30% 30%,#eaf4ff,#b6d4ff 45%,#7aa6dc 100%);
+  box-shadow:0 0 50px rgba(150,200,255,.45),inset -10px -10px 22px rgba(0,0,0,.25);
+  animation-delay:-7s}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(14px) rotate(6deg)}}
+.sun{position:absolute;width:180px;height:180px;border-radius:50%;top:-40px;right:-40px;
+  background:radial-gradient(circle at 35% 35%,#fffbe8,#ffd76b 50%,#ff9d3d 100%);
+  box-shadow:0 0 80px rgba(255,200,90,.7),0 0 160px rgba(255,160,60,.45);
+  animation:float 16s ease-in-out infinite;
+  transition:opacity 1.2s ease, visibility 1.2s ease}
+.sun::before{content:"";position:absolute;inset:-30px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,210,120,.45),transparent 65%)}
+body.day .stars,body.day .moon{opacity:0!important;visibility:hidden!important}
+body:not(.day) .sun{opacity:0!important;visibility:hidden!important}
+.shape{position:absolute;border-radius:50%;filter:blur(60px);opacity:.45;pointer-events:none;
+  transition:opacity 1.2s ease, background 1.2s ease}
+.shape.s1{width:380px;height:380px;background:#7cf0ff;top:30%;left:-120px}
+.shape.s2{width:420px;height:420px;background:#ff6b9d;bottom:-150px;right:-100px}
+body.day .shape.s1{background:#ffd76b}
+body.day .shape.s2{background:#9ad7ff}
+
+.app{max-width:560px;margin:0 auto;padding:14px 14px 90px;min-height:100vh}
+.page{display:none;animation:fadein .35s ease}
+.page.active{display:block}
+@keyframes fadein{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}
+
+.topbar{
+  position:sticky;top:0;z-index:10;
+  display:grid;grid-template-columns:auto 1fr auto auto auto;gap:8px;align-items:center;
+  padding:10px;margin-bottom:12px;
+  background:linear-gradient(180deg,rgba(11,11,42,.85),rgba(11,11,42,.55));
+  -webkit-backdrop-filter:blur(20px);
+  backdrop-filter:blur(20px);
+  border:1px solid var(--stroke);border-radius:18px;
+  box-shadow:var(--shadow-glass);
+  transition:background 1.2s ease
+}
+body.day .topbar{
+  background:linear-gradient(180deg,rgba(255,255,255,.7),rgba(255,255,255,.3));
+}
+.iconbtn{
+  width:42px;height:42px;display:grid;place-items:center;
+  border-radius:12px;background:var(--glass);border:1px solid var(--stroke);
+  font-size:18px;transition:transform .15s,background .2s,box-shadow .2s
+}
+.iconbtn:active{transform:scale(.94)}
+.iconbtn:hover{background:var(--glass-2)}
+.iconbtn.primary{background:var(--grad-warm);color:#2a1300;border:0;font-weight:900}
+.tb-points{
+  display:flex;align-items:center;gap:6px;justify-self:start;
+  padding:0 12px;height:42px;border-radius:12px;
+  background:var(--glass);border:1px solid var(--stroke);font-weight:800
+}
+.tb-points b{color:var(--primary)}
+
+.theme-toggle{
+  width:42px;height:42px;border-radius:12px;
+  background:var(--glass);border:1px solid var(--stroke);
+  display:grid;place-items:center;
+  font-size:22px;
+  transition:transform .4s,background .3s
+}
+.theme-toggle:active{transform:scale(.9) rotate(30deg)}
+.theme-toggle:hover{background:var(--glass-2)}
+
+.hero{
+  position:relative;border-radius:28px;padding:24px 20px 22px;
+  background:var(--glass-3);
+  -webkit-backdrop-filter:blur(12px);
+  backdrop-filter:blur(12px);
+  border:1px solid var(--stroke-2);
+  box-shadow:var(--shadow-glass),var(--shadow);
+  overflow:hidden;text-align:center
+}
+.hero .badge{
+  display:inline-block;padding:4px 12px;border-radius:999px;
+  background:var(--glass-2);border:1px solid var(--stroke);
+  font-size:.72rem;font-weight:800;letter-spacing:.1em;color:var(--accent);margin-bottom:14px
+}
+.hero h1{font-size:clamp(1.6rem,7vw,2.2rem);line-height:1.05;margin-bottom:6px}
+.hero h1 .grad{background:var(--grad-warm);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .sub{color:var(--ink-soft);font-size:.95rem;margin-bottom:18px}
+.countdown{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:18px 0
+}
+.cd-cell{padding:10px 6px;border-radius:14px;background:var(--glass);border:1px solid var(--stroke);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.cd-cell b{display:block;font-size:1.4rem;color:var(--primary);font-family:'Fraunces',serif}
+.cd-cell span{font-size:.65rem;color:var(--ink-mute);text-transform:uppercase;letter-spacing:.08em}
+.hero .who{font-size:.85rem;color:var(--ink-soft);margin:14px 0 18px}
+.hero .cta{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.btn{
+  padding:13px 18px;border-radius:14px;font-weight:800;
+  display:inline-flex;align-items:center;gap:8px;justify-content:center;
+  transition:transform .15s,box-shadow .2s;min-height:46px;
+  position:relative;overflow:hidden
+}
+.btn::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(255,255,255,.2),transparent 70%);opacity:0;transition:opacity .3s}
+.btn:hover::after{opacity:1}
+.btn:active{transform:scale(.97)}
+.btn.primary{background:var(--grad-warm);color:#2a1300;box-shadow:0 10px 30px -10px rgba(255,159,107,.6)}
+.btn.ghost{background:var(--glass);border:1px solid var(--stroke);color:var(--ink);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.btn.full{width:100%}
+
+.section-head{display:flex;align-items:center;justify-content:space-between;margin:18px 4px 10px}
+.section-head h2{font-size:1.15rem}
+.section-head .more{font-size:.8rem;color:var(--accent);font-weight:800}
+
+.profile-card{
+  background:var(--glass-3);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);
+  border:1px solid var(--stroke-2);border-radius:24px;
+  padding:18px;margin-bottom:14px;display:flex;
+  align-items:center;gap:16px;box-shadow:var(--shadow-glass)
+}
+.avatar{
+  width:60px;height:60px;border-radius:50%;
+  background:var(--grad-warm);display:grid;place-items:center;
+  font-size:30px;flex-shrink:0;
+  box-shadow:0 4px 20px rgba(255,209,102,.3);
+  animation:avatar-float 4s ease-in-out infinite
+}
+@keyframes avatar-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.profile-info{flex:1;min-width:0}
+.profile-info .name{font-weight:900;font-size:1.1rem}
+.profile-info .level{font-size:.75rem;color:var(--ink-mute);font-weight:700}
+.xp-bar-wrap{
+  background:var(--glass-2);border-radius:999px;height:6px;
+  overflow:hidden;margin-top:4px;border:1px solid var(--stroke);
+}
+.xp-bar-fill{
+  height:100%;border-radius:999px;
+  background:var(--grad-warm);transition:width .6s ease;width:0%;
+}
+.xp-label{font-size:.65rem;color:var(--ink-soft);margin-top:2px;display:flex;justify-content:space-between}
+.streak-badge{
+  background:var(--glass);border:1px solid var(--stroke);
+  border-radius:12px;padding:4px 12px;font-size:.7rem;
+  font-weight:800;display:flex;align-items:center;gap:4px;
+  color:var(--warn);white-space:nowrap
+}
+
+.live-block{
+  background:var(--glass-3);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border:1px solid var(--stroke);border-radius:20px;
+  padding:16px 18px;margin-bottom:14px;display:flex;
+  align-items:center;gap:14px;
+  transition:background .2s, transform .15s, box-shadow .2s;
+  box-shadow:var(--shadow-glass)
+}
+.live-block:hover{background:var(--glass-2)}
+.live-block .em{font-size:32px;flex-shrink:0}
+.live-block .content{flex:1;min-width:0}
+.live-block .content .label{font-size:.7rem;color:var(--ink-mute);font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.live-block .content .main{font-weight:800;font-size:.95rem;margin-top:2px;line-height:1.4}
+.live-block .content .sub{font-size:.75rem;color:var(--ink-soft);margin-top:2px}
+.progress-bar-wrap{
+  background:var(--glass-2);border-radius:999px;height:8px;
+  overflow:hidden;margin-top:6px;border:1px solid var(--stroke);
+}
+.progress-bar-fill{
+  height:100%;border-radius:999px;
+  background:var(--grad-warm);transition:width .5s ease;width:0%;
+}
+.live-block.clickable{cursor:pointer}
+.live-block.clickable:active{transform:scale(.98)}
+
+.weeks{display:grid;gap:10px}
+.week{
+  display:grid;grid-template-columns:54px 1fr auto;gap:12px;align-items:center;
+  padding:14px;border-radius:18px;text-align:left;
+  background:var(--glass-3);border:1px solid var(--stroke);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  transition:transform .12s,background .2s,border-color .2s,box-shadow .2s
+}
+.week:active{transform:scale(.985)}
+.week:hover{background:var(--glass-2);border-color:var(--stroke-2)}
+.week .we{
+  width:54px;height:54px;border-radius:14px;display:grid;place-items:center;
+  font-size:26px;background:linear-gradient(135deg,rgba(255,209,102,.2),rgba(124,240,255,.15));
+  border:1px solid var(--stroke)
+}
+.week .wt{min-width:0}
+.week .wt b{display:block;font-size:.98rem;font-weight:800}
+.week .wt span{display:block;font-size:.75rem;color:var(--ink-mute);margin-top:2px}
+.week .meta{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.week .chip{
+  font-size:.65rem;padding:3px 8px;border-radius:999px;
+  background:var(--glass-2);border:1px solid var(--stroke);font-weight:700;white-space:nowrap
+}
+.week .chip.done{background:rgba(122,240,168,.2);border-color:rgba(122,240,168,.4);color:var(--good)}
+.week .chip.part{background:rgba(255,209,102,.2);border-color:rgba(255,209,102,.4);color:var(--primary)}
+
+.wk-hero{
+  text-align:center;padding:22px 16px;border-radius:24px;margin-bottom:14px;
+  background:var(--glass-3);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border:1px solid var(--stroke-2);box-shadow:var(--shadow-glass)
+}
+.wk-hero .em{font-size:54px;display:block;margin-bottom:6px}
+.wk-hero h2{font-size:1.4rem;margin-bottom:4px}
+.wk-hero p{color:var(--ink-soft);font-size:.85rem}
+
+.card{
+  background:var(--glass-3);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border:1px solid var(--stroke);border-radius:20px;
+  padding:16px;margin-bottom:12px;box-shadow:var(--shadow-glass)
+}
+.card h3{font-size:.95rem;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.card h4{font-size:1rem;margin-bottom:8px}
+.cond{
+  padding:12px;border-radius:14px;background:var(--glass);
+  border-left:3px solid var(--primary);
+  white-space:pre-wrap;font-size:.92rem;line-height:1.5;margin-bottom:10px
+}
+.sol{display:flex;flex-direction:column;gap:6px;margin-bottom:10px}
+.sol-step{
+  padding:8px 12px;border-radius:10px;background:rgba(124,240,255,.08);
+  border-left:3px solid var(--accent);font-size:.88rem
+}
+.ans-box{
+  padding:10px 14px;border-radius:12px;background:var(--grad-warm);
+  color:#2a1300;font-weight:900;text-align:center
+}
+.ref li{margin-left:18px;font-size:.88rem;line-height:1.55;color:var(--ink-soft)}
+.trick{
+  padding:12px;border-radius:14px;
+  background:linear-gradient(135deg,rgba(182,147,255,.18),rgba(124,240,255,.12));
+  border:1px solid rgba(182,147,255,.3)
+}
+.trick b{display:block;margin-bottom:4px;color:var(--accent-2)}
+
+.hw-list{display:flex;flex-direction:column;gap:12px}
+.hw{
+  padding:14px;border-radius:16px;background:var(--glass);
+  border:1px solid var(--stroke);display:flex;flex-direction:column;gap:10px
+}
+.hw .q{font-size:.92rem;line-height:1.55;white-space:pre-wrap}
+.hw .q b{color:var(--primary)}
+.hw-row{display:flex;gap:8px;flex-wrap:wrap}
+.hw input{
+  flex:1;min-width:0;padding:11px 14px;border-radius:12px;
+  background:var(--glass);border:1px solid var(--stroke);
+  font-weight:700;outline:none;transition:border-color .2s,background .2s
+}
+.hw input:focus{border-color:var(--accent);background:var(--glass-2)}
+.hw input.ok{border-color:var(--good);background:rgba(122,240,168,.12)}
+.hw input.no{border-color:var(--bad);background:rgba(255,122,138,.12)}
+.hw .check{
+  padding:11px 16px;border-radius:12px;background:var(--glass-2);
+  border:1px solid var(--stroke);font-weight:800;font-size:.85rem
+}
+.hw .feedback{font-size:.85rem;font-weight:700;min-height:1.2em}
+.hw .feedback.ok{color:var(--good)}
+.hw .feedback.no{color:var(--bad)}
+
+.test-list{display:grid;gap:10px;margin-top:6px}
+.test-btn{
+  display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;
+  padding:14px;border-radius:16px;text-align:left;
+  background:var(--glass-3);border:1px solid var(--stroke);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-weight:800;
+  transition:background .2s,border-color .2s,box-shadow .2s
+}
+.test-btn:hover{background:var(--glass-2)}
+.test-btn .em{font-size:24px}
+.test-btn small{display:block;color:var(--ink-mute);font-weight:600;font-size:.72rem;margin-top:2px}
+
+.timer{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  padding:10px;border-radius:14px;margin-bottom:12px;
+  background:var(--glass-3);border:1px solid var(--stroke);font-weight:800
+}
+.timer.warn{color:var(--warn);border-color:var(--warn)}
+.timer.danger{color:var(--bad);border-color:var(--bad);animation:pulse 1s infinite}
+@keyframes pulse{50%{opacity:.6}}
+
+.qcard{
+  padding:14px;border-radius:16px;margin-bottom:10px;
+  background:var(--glass-3);border:1px solid var(--stroke);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)
+}
+.qcard .qt{font-size:.92rem;line-height:1.5;margin-bottom:10px;white-space:pre-wrap}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opt{
+  padding:11px 14px;border-radius:12px;background:var(--glass);
+  border:1px solid var(--stroke);font-weight:700;text-align:left;font-size:.9rem;
+  transition:background .2s,border-color .2s,transform .1s
+}
+.opt:active{transform:scale(.98)}
+.opt.sel{background:rgba(124,240,255,.18);border-color:var(--accent)}
+.opt.ok{background:rgba(122,240,168,.22);border-color:var(--good)}
+.opt.no{background:rgba(255,122,138,.18);border-color:var(--bad)}
+
+.games{
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px
+}
+.game-card{
+  padding:16px;border-radius:18px;text-align:left;
+  background:var(--glass-3);border:1px solid var(--stroke);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);display:flex;flex-direction:column;
+  gap:6px;min-height:100px;
+  transition:transform .15s,background .2s,box-shadow .2s
+}
+.game-card:hover{background:var(--glass-2)}
+.game-card:active{transform:scale(.96)}
+.game-card .em{font-size:28px}
+.game-card b{font-size:.92rem}
+.game-card span{font-size:.68rem;color:var(--ink-mute)}
+
+.game-stage{
+  padding:22px 16px;border-radius:20px;margin-bottom:12px;
+  background:var(--glass-3);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border:1px solid var(--stroke-2);text-align:center;
+  box-shadow:var(--shadow-glass)
+}
+.game-stage .pq{font-size:2rem;font-weight:900;margin:10px 0;font-family:'Fraunces',serif}
+.game-stage .score{display:flex;gap:14px;justify-content:center;font-weight:800;font-size:.85rem;color:var(--ink-soft)}
+.game-stage .score b{color:var(--primary)}
+.game-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:12px}
+.g-opt{
+  padding:14px;border-radius:14px;background:var(--glass-2);
+  border:1px solid var(--stroke);font-weight:900;font-size:1.05rem;
+  transition:transform .1s,background .2s,border-color .2s
+}
+.g-opt:active{transform:scale(.95)}
+.g-opt.ok{background:var(--good);color:#003015;border-color:var(--good)}
+.g-opt.no{background:var(--bad);color:#3a0010;border-color:var(--bad)}
+.g-opt.small{font-size:.85rem;padding:10px}
+
+.game-result{
+  background:var(--glass-3);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border-radius:16px;padding:18px;margin-top:12px;
+  text-align:center;border:1px solid var(--stroke-2);
+  animation:fadein .4s ease
+}
+.game-result .big{font-size:2.2rem;font-weight:900;font-family:'Fraunces',serif}
+.game-result .stat-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px
+}
+.game-result .stat-item{
+  background:var(--glass);border-radius:12px;padding:10px;
+  border:1px solid var(--stroke)
+}
+.game-result .stat-item .num{font-size:1.3rem;font-weight:900;color:var(--primary)}
+.game-result .stat-item .lbl{font-size:.65rem;color:var(--ink-mute);font-weight:700}
+
+.achieves{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.ach{
+  aspect-ratio:1;border-radius:16px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:2px;padding:4px;text-align:center;
+  background:var(--glass-3);border:1px solid var(--stroke);
+  opacity:.4;filter:grayscale(.8);transition:all .3s
+}
+.ach.on{opacity:1;filter:none;background:linear-gradient(160deg,rgba(255,209,102,.2),rgba(255,159,107,.12));border-color:rgba(255,209,102,.5)}
+.ach .em{font-size:24px}
+.ach b{font-size:.6rem;font-weight:800}
+
+.lb-form{display:flex;gap:6px;margin-bottom:10px}
+.lb-form input{
+  flex:1;min-width:0;padding:11px 14px;border-radius:12px;
+  background:var(--glass);border:1px solid var(--stroke);outline:none;
+  transition:border-color .2s
+}
+.lb-form input:focus{border-color:var(--accent)}
+.lb-form button{
+  padding:0 14px;border-radius:12px;background:var(--grad-warm);
+  color:#2a1300;font-weight:900
+}
+.lb{display:flex;flex-direction:column;gap:6px}
+.lb-row{
+  display:grid;grid-template-columns:36px 1fr auto;gap:10px;align-items:center;
+  padding:10px 12px;border-radius:12px;background:var(--glass-3);border:1px solid var(--stroke);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)
+}
+.lb-row .rk{font-size:1.1rem;font-weight:900;text-align:center}
+.lb-row.r1{background:linear-gradient(135deg,rgba(255,209,102,.25),rgba(255,159,107,.18));border-color:rgba(255,209,102,.5)}
+.lb-row.r2{background:linear-gradient(135deg,rgba(220,220,235,.18),rgba(180,180,200,.12));border-color:rgba(220,220,235,.3)}
+.lb-row.r3{background:linear-gradient(135deg,rgba(205,127,50,.2),rgba(160,90,30,.12));border-color:rgba(205,127,50,.4)}
+.lb-row .nm{font-weight:800;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lb-row .sc{font-weight:900;color:var(--primary)}
+
+.toast{
+  position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom));
+  transform:translateX(-50%) translateY(120%);
+  padding:12px 18px;border-radius:14px;background:var(--glass-2);
+  -webkit-backdrop-filter:blur(20px);
+  backdrop-filter:blur(20px);
+  border:1px solid var(--stroke-2);font-weight:800;font-size:.9rem;
+  z-index:100;transition:transform .35s cubic-bezier(.2,.8,.2,1);
+  max-width:90vw;text-align:center;box-shadow:0 18px 40px -12px rgba(0,0,0,.5)
+}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.toast.ok{border-color:var(--good);color:var(--good)}
+.toast.no{border-color:var(--bad);color:var(--bad)}
+
+.skill-tree{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
+.skill-node{
+  aspect-ratio:1;border-radius:14px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:2px;padding:4px;text-align:center;
+  background:var(--glass-3);border:1px solid var(--stroke);
+  font-size:.6rem;font-weight:800;position:relative;
+  transition:all .4s ease;cursor:pointer
+}
+.skill-node.done{
+  background:linear-gradient(160deg,rgba(255,209,102,.25),rgba(122,240,168,.15));
+  border-color:rgba(255,209,102,.6);
+  box-shadow:0 0 20px rgba(255,209,102,.3)
+}
+.skill-node.done::after{
+  content:'✓';position:absolute;top:-6px;right:-6px;
+  width:20px;height:20px;border-radius:50%;
+  background:var(--good);color:#003015;
+  display:grid;place-items:center;font-size:.7rem;font-weight:900;
+  animation:pop .4s ease
+}
+.skill-node.locked{opacity:.35;filter:grayscale(.6)}
+.skill-node .em{font-size:22px}
+@keyframes pop{0%{transform:scale(0)}70%{transform:scale(1.2)}100%{transform:scale(1)}}
+
+.streak-cal{
+  display:grid;grid-template-columns:repeat(7,1fr);gap:4px;
+  margin-top:10px;padding:10px;border-radius:14px;
+  background:var(--glass);border:1px solid var(--stroke)
+}
+.streak-day{
+  aspect-ratio:1;border-radius:8px;background:var(--glass-2);
+  display:grid;place-items:center;font-size:.65rem;
+  font-weight:800;color:var(--ink-mute);transition:all .3s
+}
+.streak-day.on{
+  background:linear-gradient(135deg,#ffd166,#ff9f6b);
+  color:#2a1300;box-shadow:0 2px 8px rgba(255,209,102,.5)
+}
+.streak-day.today{outline:2px solid var(--accent);outline-offset:1px}
+
+.boss-card{
+  border-radius:20px;padding:16px;margin-bottom:12px;
+  background:linear-gradient(135deg,rgba(255,107,157,.18),rgba(182,147,255,.15));
+  border:1px solid rgba(255,107,157,.4);
+  position:relative;overflow:hidden
+}
+.boss-card::before{
+  content:'👹';position:absolute;right:-10px;top:-10px;
+  font-size:80px;opacity:.15
+}
+.boss-card h4{font-size:1rem;margin-bottom:6px;color:#ff9fbf}
+.boss-card p{font-size:.8rem;color:var(--ink-soft);margin-bottom:10px}
+.boss-card .hp-bar{
+  height:10px;border-radius:999px;background:rgba(0,0,0,.3);
+  overflow:hidden;margin-bottom:10px
+}
+.boss-card .hp-fill{
+  height:100%;background:linear-gradient(90deg,#ff6b9d,#ffd166);
+  border-radius:999px;transition:width .6s ease;width:100%
+}
+
+.xp-pop{
+  position:fixed;pointer-events:none;z-index:1000;
+  font-weight:900;font-size:1.2rem;color:var(--primary);
+  text-shadow:0 2px 10px rgba(255,209,102,.8);
+  animation:xp-rise 1s ease forwards
+}
+@keyframes xp-rise{
+  0%{opacity:1;transform:translateY(0) scale(1)}
+  100%{opacity:0;transform:translateY(-60px) scale(1.4)}
+}
+
+.live-stats{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0
+}
+.live-stat{
+  padding:10px;border-radius:14px;text-align:center;
+  background:var(--glass-3);border:1px solid var(--stroke);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)
+}
+.live-stat .num{
+  font-size:1.3rem;font-weight:900;color:var(--primary);
+  font-family:'Fraunces',serif;line-height:1
+}
+.live-stat .lbl{font-size:.6rem;color:var(--ink-mute);font-weight:700;margin-top:2px}
+
+.chart-wrap{
+  position:relative;width:100%;height:200px;margin-top:10px;
+  background:var(--glass);border-radius:14px;padding:8px;
+  border:1px solid var(--stroke)
+}
+.chart-wrap canvas{width:100%;height:100%;display:block}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;font-size:.7rem}
+.legend-item{display:flex;align-items:center;gap:4px}
+.legend-dot{width:10px;height:10px;border-radius:50%}
+
+@media(max-width:380px){
+  .games{grid-template-columns:1fr}
+  .achieves{grid-template-columns:repeat(3,1fr)}
+  .cd-cell b{font-size:1.2rem}
+  .skill-tree{grid-template-columns:repeat(3,1fr)}
+}
+@media(min-width:560px){
+  .app{padding:18px 18px 100px}
+}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:8px}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+<div class="sky" aria-hidden="true">
+  <div class="stars"></div>
+  <div class="shape s1"></div>
+  <div class="shape s2"></div>
+  <div class="moon m1"></div>
+  <div class="moon m2"></div>
+  <div class="sun"></div>
+</div>
+
+<div class="app">
+  <header class="topbar">
+    <button class="iconbtn" id="back-btn" onclick="goHome()" style="display:none" aria-label="Назад">←</button>
+    <div class="tb-points">⭐ <b id="pts">0</b></div>
+    <button class="iconbtn" onclick="goPage('stats')" aria-label="Аналитика">📊</button>
+    <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn" aria-label="Переключить тему">
+      <span id="theme-icon">🌙</span>
+    </button>
+    <button class="iconbtn" onclick="goPage('achieves')" aria-label="Достижения">🏆</button>
+  </header>
+
+  <main id="page-home" class="page active">
+    <section class="hero">
+      <span class="badge">✦ ЛЕТО 2026 ✦</span>
+      <h1><span class="grad">Лето</span><br>с математикой</h1>
+      <p class="sub">Подготовка к олимпиадам</p>
+      <div class="countdown" id="cd">
+        <div class="cd-cell"><b id="cd-d">0</b><span>дней</span></div>
+        <div class="cd-cell"><b id="cd-h">0</b><span>часов</span></div>
+        <div class="cd-cell"><b id="cd-m">0</b><span>минут</span></div>
+        <div class="cd-cell"><b id="cd-s">0</b><span>сек</span></div>
+      </div>
+      <p class="who">✏️ Альмагамбетова Зибагуль Агайдаровна</p>
+      <div class="cta">
+        <button class="btn primary" onclick="goPage('menu')">🎯 Начать</button>
+        <button class="btn ghost" onclick="goPage('games')">🎮 Игры</button>
+      </div>
+    </section>
+
+    <div class="profile-card">
+      <div class="avatar" id="avatar-emoji">🧑‍🎓</div>
+      <div class="profile-info">
+        <div class="name" id="profile-name">Ученик</div>
+        <div class="level" id="profile-level">Уровень 1</div>
+        <div class="xp-bar-wrap"><div class="xp-bar-fill" id="xp-fill" style="width:0%"></div></div>
+        <div class="xp-label"><span id="xp-current">0</span><span id="xp-next">100 XP</span></div>
+      </div>
+      <div class="streak-badge">🔥 <span id="streak-days">0</span> дн.</div>
+    </div>
+
+    <div class="live-block">
+      <div class="em">📊</div>
+      <div class="content">
+        <div class="label">Прогресс курса</div>
+        <div class="main"><span id="progress-pct">0%</span> — <span id="progress-text">Начни обучение!</span></div>
+        <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progress-fill"></div></div>
+      </div>
+    </div>
+
+    <div class="live-block clickable" id="continue-block">
+      <div class="em">🚀</div>
+      <div class="content">
+        <div class="label">Продолжить</div>
+        <div class="main" id="continue-text">Открой первую неделю</div>
+        <div class="sub" id="continue-sub">Нажми, чтобы продолжить</div>
+      </div>
+      <div style="font-size:1.2rem;color:var(--ink-mute)">→</div>
+    </div>
+
+    <div class="live-block" id="daily-block">
+      <div class="em">📅</div>
+      <div class="content">
+        <div class="label">Задание дня</div>
+        <div class="main" id="daily-text">Загрузка...</div>
+        <div class="sub" id="daily-sub">Реши и проверь себя</div>
+      </div>
+      <button class="btn ghost" style="padding:6px 14px;min-height:36px;font-size:.8rem" onclick="showDailyAnswer()">Ответ</button>
+    </div>
+
+    <div class="live-block" id="riddle-block">
+      <div class="em">🧩</div>
+      <div class="content">
+        <div class="label">Математическая загадка</div>
+        <div class="main" id="riddle-text">Загрузка...</div>
+        <div class="sub" id="riddle-sub">Подумай и открой ответ</div>
+      </div>
+      <button class="btn ghost" style="padding:6px 14px;min-height:36px;font-size:.8rem" onclick="showRiddleAnswer()">Ответ</button>
+    </div>
+
+    <div class="section-head"><h2>🌳 Дерево навыков</h2><button class="more" onclick="goPage('stats')">аналитика →</button></div>
+    <div class="card">
+      <div class="skill-tree" id="skill-tree"></div>
+    </div>
+
+    <div class="section-head"><h2>🔥 Непрерывность</h2></div>
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <div style="font-size:.85rem;font-weight:800">Стрик: <span id="streak-big" style="color:var(--warn)">0</span> дней подряд</div>
+        <div style="font-size:.7rem;color:var(--ink-mute)">последние 7 дней</div>
+      </div>
+      <div class="streak-cal" id="streak-cal"></div>
+    </div>
+
+    <div class="section-head"><h2>📊 Статистика</h2></div>
+    <div class="live-stats">
+      <div class="live-stat"><div class="num" id="ls-points">0</div><div class="lbl">БАЛЛОВ</div></div>
+      <div class="live-stat"><div class="num" id="ls-correct">0</div><div class="lbl">ВЕРНЫХ</div></div>
+      <div class="live-stat"><div class="num" id="ls-games">0</div><div class="lbl">ИГР</div></div>
+    </div>
+
+    <div class="section-head"><h2>📚 8 недель</h2><button class="more" onclick="goPage('menu')">все →</button></div>
+    <div class="weeks" id="home-weeks"></div>
+
+    <div class="section-head"><h2>🎮 Игры</h2></div>
+    <div class="games" id="home-games">
+      <button class="game-card" onclick="startGame('quick')"><div class="em">⚡</div><b>Быстрый счёт</b><span>Умножение</span></button>
+      <button class="game-card" onclick="startGame('sequence')"><div class="em">🔢</div><b>Закономерность</b><span>4 типа</span></button>
+      <button class="game-card" onclick="startGame('riddle')"><div class="em">🎲</div><b>Угадай правило</b><span>8 правил</span></button>
+    </div>
+  </main>
+
+  <main id="page-menu" class="page">
+    <div class="wk-hero">
+      <span class="em">📚</span>
+      <h2>Программа занятий</h2>
+      <p>«Каждый день — шаг к победе!»</p>
+    </div>
+    <div class="weeks" id="menu-weeks"></div>
+    <div class="section-head"><h2>📝 Контрольные тесты</h2></div>
+    <div class="test-list">
+      <button class="test-btn" onclick="startTest('5class-22-23')"><div class="em">📝</div><div><b>5 класс</b><small>2022–2023 · 10 вопросов</small></div><span>→</span></button>
+      <button class="test-btn" onclick="startTest('5class-24-25')"><div class="em">📝</div><div><b>5 класс</b><small>2024–2025 · 7 вопросов</small></div><span>→</span></button>
+      <button class="test-btn" onclick="startTest('6class-24-25')"><div class="em">📝</div><div><b>6 класс</b><small>2024–2025 · 7 вопросов</small></div><span>→</span></button>
+    </div>
+    <div class="section-head"><h2>🎮 Игры</h2></div>
+    <div class="games" id="games-grid"></div>
+  </main>
+
+  <main id="page-week" class="page"><div id="week-content"></div></main>
+
+  <main id="page-test" class="page">
+    <div class="wk-hero">
+      <h2 id="test-title"></h2>
+      <p id="test-subtitle"></p>
+    </div>
+    <div class="timer" id="test-timer">⏱️ <span id="test-time">05:00</span></div>
+    <div id="test-content"></div>
+    <button class="btn primary full" onclick="finishTest()" style="margin-top:10px">Завершить тест</button>
+  </main>
+
+  <main id="page-games" class="page">
+    <div class="wk-hero"><span class="em">🎮</span><h2>Игры</h2><p>Тренируй мозг</p></div>
+    <div class="games" id="games-grid-full"></div>
+  </main>
+
+  <main id="page-game" class="page"><div id="game-content"></div></main>
+
+  <main id="page-stats" class="page">
+    <div class="wk-hero"><span class="em">📊</span><h2>Аналитика</h2><p>Твои результаты в реальном времени</p></div>
+
+    <div class="live-stats">
+      <div class="live-stat"><div class="num" id="an-pts">0</div><div class="lbl">БАЛЛОВ</div></div>
+      <div class="live-stat"><div class="num" id="an-cor">0</div><div class="lbl">ВЕРНЫХ</div></div>
+      <div class="live-stat"><div class="num" id="an-gm">0</div><div class="lbl">ИГР</div></div>
+    </div>
+
+    <div class="card">
+      <h3>📈 Прогресс по неделям</h3>
+      <div class="chart-wrap"><canvas id="chart-weeks"></canvas></div>
+      <div class="legend">
+        <div class="legend-item"><span class="legend-dot" style="background:#ffd166"></span>Решено</div>
+        <div class="legend-item"><span class="legend-dot" style="background:rgba(255,255,255,.2)"></span>Всего</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🎮 Активность по играм</h3>
+      <div class="chart-wrap"><canvas id="chart-games"></canvas></div>
+    </div>
+
+    <div class="card">
+      <h3>🔥 Непрерывность (30 дней)</h3>
+      <div class="chart-wrap" style="height:120px"><canvas id="chart-streak"></canvas></div>
+    </div>
+
+    <div class="card">
+      <h3>🏆 Достижения</h3>
+      <div id="an-ach" style="font-size:.85rem;color:var(--ink-soft)">Загрузка...</div>
+    </div>
+  </main>
+
+  <main id="page-achieves" class="page">
+    <div class="wk-hero"><span class="em">🏆</span><h2>Достижения</h2><p id="ach-progress"></p></div>
+    <div class="card"><h3>⭐ Твой прогресс</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div style="padding:10px;border-radius:12px;background:var(--glass-2);text-align:center"><b id="st-pts" style="font-size:1.4rem;color:var(--primary);font-family:'Fraunces',serif">0</b><div style="font-size:.7rem;color:var(--ink-mute)">баллов</div></div>
+        <div style="padding:10px;border-radius:12px;background:var(--glass-2);text-align:center"><b id="st-cor" style="font-size:1.4rem;color:var(--good);font-family:'Fraunces',serif">0</b><div style="font-size:.7rem;color:var(--ink-mute)">верных ответов</div></div>
+        <div style="padding:10px;border-radius:12px;background:var(--glass-2);text-align:center"><b id="st-gm" style="font-size:1.4rem;color:var(--accent);font-family:'Fraunces',serif">0</b><div style="font-size:.7rem;color:var(--ink-mute)">игр сыграно</div></div>
+        <div style="padding:10px;border-radius:12px;background:var(--glass-2);text-align:center"><b id="st-best" style="font-size:1.4rem;color:var(--accent-2);font-family:'Fraunces',serif">0</b><div style="font-size:.7rem;color:var(--ink-mute)">лучший рекорд</div></div>
+      </div>
+    </div>
+    <div class="card"><h3>🏅 Награды</h3><div class="achieves" id="ach-grid"></div></div>
+    <div class="section-head"><h2>🏆 Таблица лидеров</h2></div>
+    <div class="lb-form">
+      <input id="lb-name" placeholder="Имя" maxlength="20">
+      <button onclick="addLeaderFromInput()">+ Сохранить мой счёт</button>
+    </div>
+    <div class="lb" id="lb-list"></div>
+  </main>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div id="confetti-container" style="position:fixed;inset:0;pointer-events:none;z-index:999;overflow:hidden"></div>
+
+<script>
+/* ============================================================
+   БЕЗОПАСНЫЙ LOCALSTORAGE (для открытия из файла на телефоне)
+   ============================================================ */
+const LS = {
+  get(k, def){
+    try{ const v = localStorage.getItem(k); return v ? JSON.parse(v) : def; }
+    catch(e){ return def; }
+  },
+  set(k, v){
+    try{ localStorage.setItem(k, JSON.stringify(v)); return true; }
+    catch(e){ return false; }
+  }
+};
+
+/* ============================================================
+   РЕЖИМ ДЕНЬ / НОЧЬ
+   ============================================================ */
+let currentTheme = 'auto';
+
+function getSystemTheme() {
+  const h = new Date().getHours();
+  return (h >= 5 && h < 18) ? 'day' : 'night';
+}
+
+function applyTheme(theme) {
+  if (theme === 'auto') theme = getSystemTheme();
+  const isDay = theme === 'day';
+  document.body.classList.toggle('day', isDay);
+  const icon = document.getElementById('theme-icon');
+  if (icon) icon.textContent = isDay ? '☀️' : '🌙';
+  try { localStorage.setItem('mathTheme', theme); } catch(e) {}
+}
+
+function toggleTheme() {
+  const isDay = document.body.classList.contains('day');
+  if (currentTheme === 'auto') {
+    currentTheme = isDay ? 'night' : 'day';
+    applyTheme(currentTheme);
+  } else if (currentTheme === 'day') {
+    currentTheme = 'night';
+    applyTheme('night');
+  } else {
+    currentTheme = 'day';
+    applyTheme('day');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  try {
+    const saved = localStorage.getItem('mathTheme');
+    if (saved && (saved === 'day' || saved === 'night' || saved === 'auto')) {
+      currentTheme = saved;
+      applyTheme(saved);
+    } else { currentTheme = 'auto'; applyTheme('auto'); }
+  } catch(e) { currentTheme = 'auto'; applyTheme('auto'); }
+});
+
+/* ============================================================
+   ДАННЫЕ
+   ============================================================ */
+const CURRICULUM = [
+{id:1,title:"Задачи на движение",dates:"1–7 июля",emoji:"🐌",
+ theory:{analysis:{title:"🐌 Улитка и дерево",condition:"Улитка за день заползает вверх по дереву на 4 м, а за ночь сползает на 2 м. Высота дерева 12 м. За сколько дней улитка достигнет вершины?",
+   solution:["За день + ночь: 4 м − 2 м = 2 м чистого подъёма","За 4 полных дня: 2 м × 4 = 8 м","На 5-й день (днём): 8 м + 4 м = 12 м ✓"],answer:"5 дней"},
+   reference:["Чистый подъём за сутки = подъём днём − спуск ночью","В последний день считаем только дневной подъём"],
+   trick:{title:"«Улитка, которая всегда побеждает»",text:"В последний день улитка не сползает ночью — она уже наверху!"}},
+ homework:[
+    "Улитка за день заползает вверх по дереву на 4 м, а за ночь сползает на 3 м. Высота дерева 10 м. За сколько дней улитка достигнет вершины?",
+    "Улитка за день заползает вверх по дереву на 4 м, а за ночь сползает на 1 м. Высота дерева 13 м. За сколько дней улитка достигнет вершины?",
+    "Улитка за день заползает вверх по дереву на 4 м, а за ночь сползает на 2 м. Высота дерева 14 м. За сколько дней улитка достигнет вершины?",
+    "Улитка за день заползает вверх по дереву на 2 м, а за ночь сползает на 1 м. Высота дерева 11 м. За сколько дней улитка достигнет вершины?",
+    "Улитка за день заползает вверх по дереву на 5 метров, а за ночь сползает вниз на 3 метра. Высота дерева 17 метров. На какой день она достигнет вершины?"
+ ],answers:["7","4","6","10","7"]},
+{id:2,title:"Числовая последовательность",dates:"8–14 июля",emoji:"🔢",
+ theory:{analysis:{title:"🔢 Найти следующее число",condition:"19, 26, 34, 43, 53, ?",
+   solution:["26 − 19 = 7, 34 − 26 = 8, 43 − 34 = 9, 53 − 43 = 10","Следующая разность = 11, значит 53 + 11 = 64"],answer:"64"},
+   reference:["Ищи закономерность: сложение, умножение, степени","Выпиши разности между соседними членами"],
+   trick:{title:"«Ищи скрытое правило!»",text:"Пробуй разности, произведения, суммы цифр."}},
+ homework:[
+   "1, 10, 11, 19, 21, 28, 31, 37, …, 46. Найдите недостающее.",
+   "1, 3, 7, 15, …, 63. Найдите пропущенное.",
+   "2, 10, 13, 21, 24, 32, 35, 43, …, 54. Найдите недостающее.",
+   "3, 7, 11, 15, …, 23. Найдите пропущенное.",
+   "7, 3, 1, 3, 3, 9, 7, … Найдите 2024-й член.",
+   "3, 5, 7, 9, 11, 13, 17, 19, … Найдите лишний.",
+   "2, 6, 12, 20, 30, … Найдите следующее.",
+   "7, 15, 31, 63, … Найдите следующее.",
+   "2023, 225, 47, 11, ? Найдите ?",
+   "1, 2, 4, 6, 9, 12, 15, 19, 23, 27, 31. Найдите сумму двух пропущенных чисел (7 и 11)."
+ ],answers:["41","31","46","19","3","9","42","127","3","18"]},
+{id:3,title:"Задания на шифр",dates:"15–21 июля",emoji:"🔐",
+ theory:{analysis:{title:"🔐 Буква ↔ Цифра",
+   condition:"Определите число, соответствующее слову ҚАТАЛ.\nМАСАҚ — 97872\nБАТЫЛ — 36472\nҚАНАТ — 57862\nМЫСАЛ — 37479",
+   solution:["Қ из ҚАНАТ = 57862 → Қ = 5","А (2-я позиция в ҚАНАТ) → А = 7","Т (3-я позиция в ҚАНАТ) → Т = 8"],answer:"57862"},
+   reference:["Одинаковые буквы = одинаковые цифры","Начинай с буквы, встречающейся в нескольких словах"],
+   trick:{title:"«Буква = Цифра»",text:"Составь таблицу соответствий!"}},
+ homework:[
+   "Определите число, соответствующее слову АҚҚУ.\nАҒЗА — 3118\nАҚСУ — 3158\nАЛҚА — 3913\nАМАЛ — 3439\nАҚҚУ — ?",
+   "Определите слово, соответствующее числу 7351.\n7273 — АЛТЫ\n3747 — ЛАҚА\n2167 — МЫНА\n5747 — ТАҚА\n7351 — ?",
+   "Определите слово для числа 32476.\n31236 — АЛПЫС\n36178 — АШҚЫШ\n39879 — АТЛАС\n39178 — АСТЫҚ",
+   "Определите число для АЛАМАН.\nАДЫРНА — 498302\nАТАУФА — 262902\nДАУЛАУ — 282125\nДҰЛЫҒА — 429829"
+ ],answers:["3558","ҚАЗАҚ","АЛМАЗ","498302"]},
+{id:4,title:"Нестандартные операции",dates:"22–28 июля",emoji:"⭐",
+ theory:{analysis:{title:"⭐ Найди скрытое правило",condition:"3 ★ 2 = 5\n5 ★ 4 = 9\n7 ★ 1 = 8\n4 ★ 6 = ?",
+   solution:["Проверка: 3 + 2 = 5 ✓, 5 + 4 = 9 ✓, 7 + 1 = 8 ✓","Правило: a ★ b = a + b","4 ★ 6 = 10"],answer:"10"},
+   reference:["Проверяй +, −, ×, ÷, степени","Правило должно работать для ВСЕХ примеров"],
+   trick:{title:"«Метод перебора с проверкой»",text:"Начинай с простых: сложение, вычитание, умножение."}},
+ homework:[
+   "I. 7 ★ 5 = 36\nII. 2 ★ 12 = 42\nIII. 14 ★ 3 = 51\nIV. 25 ★ 4 = ?",
+   "I. 198 □ 325 = 8\nII. 684 □ 214 = 11\nIII. 973 □ 356 = 5\nIV. 875 □ 412 = ?",
+   "I. 16 + 6 = 52\nII. 5 + 8 = 69\nIII. 6 + 7 = 55\nIV. 13 + 5 = ?",
+   "I. 13 ★ 7 = 36\nII. 21 ★ 10 = 121\nIII. 13 ★ 5 = 64\nIV. 9 ★ 3 = ?",
+   "I. 5 ★ 2 = (3, 7, 10)\nII. 4 ★ 3 = (1, 7, 12)\nIII. 2 ★ 1 = (1, 3, 4)\nIV. 3 ★ 1 = ?"
+ ],answers:["87","10","68","36","(2,4,3)"]},
+{id:5,title:"Задачи на периодичность",dates:"29 июля – 4 авг",emoji:"🔄",
+ theory:{analysis:{title:"🔄 День недели через N дней",condition:"Если сегодня пятница, какой день будет через 60 дней?",
+   solution:["60 ÷ 7 = 8 (полных недель) и остаток 4","Пт → Сб(1) → Вс(2) → Пн(3) → Вт(4)"],answer:"Вторник"},
+   reference:["Период дней недели = 7","N mod 7 = остаток сдвига"],
+   trick:{title:"«НОК — ключ к встречам!»",text:"Несколько событий повторяются через НОК периодов."}},
+ homework:[
+   "Сегодня пятница. Какой день через 60 дней?",
+   "Сегодня суббота. Какой день через 50 дней?",
+   "Арман — каждые 3 дня, Асыл — 4, Аман — 5. Через сколько дней встретятся?",
+   "6 февраля — суббота. Какой день 18 марта?",
+   "Дежурство каждые 5 дней, первое в воскресенье. Какой день 21-е?",
+   "Саша — 3, Коля — 4, Петя — 5. Встретились во вторник. Когда снова?",
+   "Сегодня воскресенье. Какой день был 326 дней назад?",
+   "Розу — 6 дней, ромашку — 4. В пятницу полили вместе. Когда 6-й раз вместе?",
+   "Азамат — 3 дня, Мадияр — 2. В пятницу вместе. Когда 4-й раз?",
+   "Саша — 3, Вася — 4, Ваня — 5. В понедельник вместе. Когда снова?"
+ ],answers:["Вторник","Понедельник","Через 60 дней","Пятница","Суббота","В среду","Среда","Через 60 дней","Через 12 дней","Среда"]},
+{id:6,title:"Задачи на проценты",dates:"5–11 августа",emoji:"💯",
+ theory:{analysis:{title:"💯 Проценты в задачах",condition:"В школе 400 учеников. 60% занимаются спортом. Сколько учеников?",
+   solution:["60% от 400 = 400 × 60 / 100 = 240"],answer:"240"},
+   reference:["1% от N = N / 100","P% от N = N × P / 100"],
+   trick:{title:"«Процент — это сотая доля»",text:"35% = 0,35. Учись переводить!"}},
+ homework:[
+   "Цена 1200 тг. Скидка 25%. Сколько стоит после скидки?",
+   "Решил 18 задач из 24. Какой это процент?",
+   "Зарплата 50 000 тг увеличилась на 20%. Сколько стала?",
+   "В сплаве 45 кг меди и 5 кг цинка. Какой % цинка?",
+   "После уменьшения на 30% число стало 350. Какое было?"
+ ],answers:["900","75","60000","10","500"]},
+{id:7,title:"Комбинаторика и подсчёт",dates:"12–18 августа",emoji:"🎲",
+ theory:{analysis:{title:"🎲 Подсчёт вариантов",condition:"Сколькими способами расставить 4 книги на полке?",
+   solution:["4 × 3 × 2 × 1 = 24"],answer:"24"},
+   reference:["Правило произведения: m × n","Перестановки n предметов = n!"],
+   trick:{title:"«Нарисуй дерево вариантов»",text:"От одного узла — ветки для каждого варианта."}},
+ homework:[
+   "Сколькими способами расставить 5 книг?",
+   "Из 10 учеников выбрать 3. Сколько способов?",
+   "Сколько трёхзначных чисел из цифр 1, 2, 3, 4 без повторения?",
+   "6 команд, каждая играет с каждой 1 раз. Сколько игр?",
+   "8 гостей, каждый жмёт руку каждому. Сколько рукопожатий?"
+ ],answers:["120","120","24","15","28"]},
+{id:8,title:"Вычисления (метод Гаусса)",dates:"19–25 августа",emoji:"🧮",
+ theory:{analysis:{title:"🧮 Метод Гаусса",condition:"Вычислите: 1 + 2 + 3 + … + 99 + 100",
+   solution:["1 + 100 = 101","2 + 99 = 101","Пар: 100 ÷ 2 = 50","Сумма = 50 × 101 = 5050"],answer:"5050"},
+   reference:["Складывай первое и последнее","Пары = всего ÷ 2","Сумма = пар × сумма пары"],
+   trick:{title:"«Парами быстрее!»",text:"В последовательностях с равным шагом — складывай парами."}},
+ homework:[
+   "1001 + 1003 + … + 2023\nA) 773143  B) 774144  C) 775155  D) 775255",
+   "1001 + 1003 + … + 2025\nA) 774144  B) 775155  C) 776169  D) 775255",
+   "6 + 7 + 8 + … + 23 + 24 = ?",
+   "1+3+5+…+99 → ?, 3+6+9+…+90 → ?, 2+4+6+…+100 → ?\nВарианты: 2500, 1395, 2550"
+ ],answers:["775155","776169","234","2500,1395,2550"]}
+];
+
+const TESTS = {
+'5class-22-23':{title:'5 класс (2022–2023)',subtitle:'10 вопросов',time:600,
+ questions:[
+  {t:'Мама старше дочери на 23 года. Сколько лет дочери, если сумма возрастов 65?',o:['A) 17','B) 21','C) 23','D) 44'],a:'B'},
+  {t:'Решите рациональным способом: 2022 × 28 + 1011 × 44.',o:['A) 101010','B) 101100','C) 101101','D) 110110'],a:'B'},
+  {t:'Уроки с 8:15, 45 мин, перемены 10 мин. Когда закончатся 8 уроков?',o:['A) 12:45','B) 12:55','C) 15:25','D) 15:35'],a:'C'},
+  {t:'Сумма двух простых чисел = 99. Чему равно их произведение?',o:['A) 150','B) 194','C) 198','D) 288'],a:'B'},
+  {t:'Поезд длиной 200 м со скоростью 36 км/ч проходит мост 1 км. За сколько?',o:['A) 22 сек','B) 33 сек','C) 80 сек','D) 120 сек'],a:'D'},
+  {t:'Аскар: 36 км/ч → опоздание 20 мин, 60 км/ч → раньше на 20. Скорость для точного приезда?',o:['A) 40 км/ч','B) 45 км/ч','C) 48 км/ч','D) 50 км/ч'],a:'B'},
+  {t:'Три человека, у каждого определённая сумма… Сколько у первого вначале?',o:['A) 4100 тг','B) 5100 тг','C) 5500 тг','D) 6000 тг'],a:'C'},
+  {t:'Максат 5-й с начала, 18-й с конца. Сколько учеников?',o:['A) 22','B) 23','C) 24','D) 21'],a:'A'},
+  {t:'Максат → Ерасыл 10 яблок = поровну, Ерасыл → Канат 10 = поровну. Всего 210. Сколько у Каната?',o:['A) 60','B) 70','C) 50','D) 90'],a:'B'},
+  {t:'Аскар, Ермахан, Алимырза: 2, 3, 4 мороженых в день. Сколько съест Алимырза при 54 общих?',o:['A) 12','B) 18','C) 24','D) 30'],a:'C'}
+ ]},
+'5class-24-25':{title:'5 класс (2024–2025)',subtitle:'7 вопросов',time:420,
+ questions:[
+  {t:'Выберите ряд простых чисел:',o:['A) 1; 3; 5; 7; 9','B) 2; 4; 6; 8','C) 2; 13; 17; 29','D) 15; 27; 37'],a:'C'},
+  {t:'4 яблока ↔ 3 банана. Яблоко 60 тг. Сколько стоит банан?',o:['A) 45 тг','B) 60 тг','C) 80 тг','D) 90 тг'],a:'C'},
+  {t:'Мирас 8 — Кайрат 12. Кайрат 15 — Самат 17. Сколько Мирасу, когда Самату 15?',o:['A) 9','B) 10','C) 11','D) 12'],a:'C'},
+  {t:'Что вычесть из 7112, чтобы изменилась только цифра сотен?',o:['A) 1000','B) 1190','C) 2024','D) 2101'],a:'A'},
+  {t:'Зал открылся 2 марта (среда). Работа Пн-Пт. На какой день 21-й рабочий день?',o:['A) 27 марта','B) 28 марта','C) 29 марта','D) 30 марта'],a:'C'},
+  {t:'7, 3, 1, 3, 3, 9, 7, … Найдите 2024-й член.',o:['A) 1','B) 3','C) 5','D) 7'],a:'B'},
+  {t:'Укажите наименьшую неправильную дробь.',o:['A) 1/2024','B) 1001/1000','C) 3/10','D) 2024/1003'],a:'B'}
+ ]},
+'6class-24-25':{title:'6 класс (2024–2025)',subtitle:'7 вопросов',time:420,
+ questions:[
+  {t:'Выберите ряд простых чисел:',o:['A) 1; 3; 5; 7; 9','B) 2; 4; 6; 8','C) 2; 13; 17; 29','D) 15; 27; 37'],a:'C'},
+  {t:'4 яблока ↔ 3 банана. Яблоко 60 тг. Сколько стоит банан?',o:['A) 45 тг','B) 60 тг','C) 80 тг','D) 90 тг'],a:'C'},
+  {t:'Укажите наименьшую неправильную дробь.',o:['A) 1/2024','B) 1001/1000','C) 3/10','D) 2024/1003'],a:'B'},
+  {t:'Решите уравнение: x/7 + 1/14 = 4 − 2/14',o:['A) 1','B) 6','C) 7','D) 8'],a:'D'},
+  {t:'Сад 60×20 м → переделали в квадрат тем же забором. Насколько выросла площадь?',o:['A) 200 м²','B) 400 м²','C) 600 м²','D) 800 м²'],a:'B'},
+  {t:'Деревья через 9 м, дорога 72 м. Сколько деревьев?',o:['A) 7','B) 8','C) 9','D) 10'],a:'C'},
+  {t:'Ерасыл 9 минут: 1, 2, 3, … км/ч. Сколько всего метров?',o:['A) 500','B) 600','C) 750','D) 1000'],a:'C'}
+ ]}
+};
+
+const MOTIV_GOOD = ["🎉 Великолепно!","🚀 Космическая скорость!","🌟 Ты звезда!","💎 Точно в цель!","🔥 Огонь!","🦁 Уровень — лев!","🧠 Мозг включён на максимум!","⚡ Молниеносно!","🏆 Чемпион!","✨ Идеально!"];
+const MOTIV_BAD = ["💪 Попробуй ещё — ты близко!","🌱 Ошибка — это рост","🧭 Подумай ещё раз","🔍 Проверь решение","✏️ Перечитай условие","🎯 Не сдавайся!","🌈 После дождя — радуга","🪄 Магия в попытках"];
+
+const ACHIEVEMENTS = [
+ {id:'first',em:'🎯',name:'Первый шаг',desc:'1 правильный ответ',check:s=>s.correct>=1},
+ {id:'ten',em:'🔟',name:'Десятка',desc:'10 верных',check:s=>s.correct>=10},
+ {id:'fifty',em:'🏅',name:'50 ответов',desc:'50 верных',check:s=>s.correct>=50},
+ {id:'hundred',em:'🥇',name:'100 ответов',desc:'100 верных',check:s=>s.correct>=100},
+ {id:'week',em:'📘',name:'Неделя',desc:'Полная неделя',check:s=>s.weeksDone>=1},
+ {id:'half',em:'🌗',name:'Половина пути',desc:'4 недели',check:s=>s.weeksDone>=4},
+ {id:'all',em:'🌕',name:'Все недели',desc:'8 недель',check:s=>s.weeksDone>=8},
+ {id:'gamer',em:'🎮',name:'Геймер',desc:'5 игр',check:s=>s.games>=5},
+ {id:'master',em:'👑',name:'Мастер',desc:'500 баллов',check:s=>s.points>=500},
+ {id:'xp1000',em:'🚀',name:'1000 XP',desc:'1000 очков опыта',check:s=>s.points>=1000},
+ {id:'olympic',em:'👑',name:'Олимпийский чемпион',desc:'Набери 2000 баллов',check:s=>s.points>=2000}
+];
+
+/* ============ STATE ============ */
+const DEFAULT_STATE = {points:0,correct:0,games:0,best:0,weekAnswers:{},doneAch:[],weeksDone:0,gameStats:{},streak:0,streakDays:[]};
+const S = {
+ get(){ return LS.get('mathState', DEFAULT_STATE); },
+ set(s){ LS.set('mathState', s); updateBars(); updateHome(); }
+};
+let state = S.get();
+
+function updateBars() {
+ document.getElementById('pts').textContent = state.points;
+ document.getElementById('st-pts').textContent = state.points;
+ document.getElementById('st-cor').textContent = state.correct;
+ document.getElementById('st-gm').textContent = state.games;
+ document.getElementById('st-best').textContent = state.best;
+ updateProfile();
+}
+
+function updateProfile() {
+ const level = Math.floor(state.points/100)+1;
+ document.getElementById('profile-level').textContent = 'Уровень '+level;
+ document.getElementById('xp-current').textContent = state.points+' XP';
+ document.getElementById('xp-next').textContent = (100 - state.points%100)+' XP';
+ document.getElementById('xp-fill').style.width = (state.points%100)+'%';
+ document.getElementById('streak-days').textContent = state.streak||0;
+ const avatars = ['🧑‍🎓','👩‍🎓','🧑‍🏫','👨‍🏫','🎓','🌟'];
+ document.getElementById('avatar-emoji').textContent = avatars[Math.min(level-1,avatars.length-1)];
+ document.getElementById('profile-name').textContent = 'Ученик';
+}
+
+/* ============ NAV ============ */
+function goPage(id) {
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ const el = document.getElementById('page-'+id);
+ if(el) el.classList.add('active');
+ document.getElementById('back-btn').style.display = id==='home'?'none':'grid';
+ window.scrollTo(0,0);
+ if(id==='menu') renderMenu();
+ if(id==='achieves') renderAchieves();
+ if(id==='games') renderGames();
+ if(id==='home') updateHome();
+ if(id==='stats') renderCharts();
+ currentPage = id;
+}
+let currentPage = 'home';
+
+function goHome() {
+ if(['week','test','game'].includes(currentPage)) {
+  if(currentPage==='test') stopTimer();
+  goPage(currentPage==='week'?'menu':currentPage==='test'?'menu':'games');
+ } else goPage('home');
+}
+
+/* ============ COUNTDOWN ============ */
+function tickCD() {
+ const t = new Date('2026-10-09T09:00:00').getTime() - Date.now();
+ if(t<0){['cd-d','cd-h','cd-m','cd-s'].forEach(i=>{const e=document.getElementById(i);if(e)e.textContent='0'});return}
+ document.getElementById('cd-d').textContent = Math.floor(t/86400000);
+ document.getElementById('cd-h').textContent = Math.floor(t/3600000)%24;
+ document.getElementById('cd-m').textContent = Math.floor(t/60000)%60;
+ document.getElementById('cd-s').textContent = Math.floor(t/1000)%60;
+}
+setInterval(tickCD,1000); tickCD();
+
+/* ============ TOAST ============ */
+let toastTimer;
+function toast(msg, type='') {
+ const t = document.getElementById('toast');
+ t.textContent = msg; t.className = 'toast show ' + type;
+ clearTimeout(toastTimer);
+ toastTimer = setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+/* ============ WEEKS ============ */
+function weekStatus(w) {
+ const a = (state.weekAnswers && state.weekAnswers[w.id]) || {};
+ const ok = w.answers.reduce((n,c,i) => n + (norm(a[i]) === norm(c) ? 1 : 0), 0);
+ return {ok, total: w.homework.length};
+}
+
+function weekCardHTML(w) {
+ const {ok,total} = weekStatus(w);
+ const cls = ok===total?'done':ok>0?'part':'';
+ const lbl = ok===total ? `✓ ${ok}/${total}` : ok>0 ? `${ok}/${total}` : `${total} зад.`;
+ return `<button class="week" onclick="openWeek(${w.id})">
+  <div class="we">${w.emoji}</div>
+  <div class="wt"><b>Неделя ${w.id}. ${w.title}</b><span>${w.dates}</span></div>
+  <div class="meta"><span class="chip ${cls}">${lbl}</span></div>
+ </button>`;
+}
+
+function renderHome(){document.getElementById('home-weeks').innerHTML=CURRICULUM.slice(0,4).map(weekCardHTML).join('')}
+function renderMenu(){document.getElementById('menu-weeks').innerHTML=CURRICULUM.map(weekCardHTML).join('')}
+
+function norm(s){return String(s||'').trim().toLowerCase().replace(/\s+/g,'').replace(/[.,;]/g,'')}
+
+function openWeek(id) {
+ const w = CURRICULUM.find(x=>x.id===id); if(!w) return;
+ const saved = (state.weekAnswers && state.weekAnswers[id]) || {};
+ const st = weekStatus(w);
+ let html = `
+   <div class="wk-hero"><span class="em">${w.emoji}</span><h2>Неделя ${w.id}. ${w.title}</h2><p>${w.dates}</p></div>
+  <div class="card"><h3>🔍 РАЗБОР</h3><h4>${w.theory.analysis.title}</h4>
+   <div class="cond">${esc(w.theory.analysis.condition)}</div>
+   <div class="sol">${w.theory.analysis.solution.map(s=>`<div class="sol-step">${esc(s)}</div>`).join('')}</div>
+   <div class="ans-box">Ответ: ${esc(w.theory.analysis.answer)}</div>
+  </div>
+  <div class="card"><h3>📚 СПРАВКА</h3><ul class="ref">${w.theory.reference.map(r=>`<li>${esc(r)}</li>`).join('')}</ul></div>
+  <div class="card trick"><b>💡 ${esc(w.theory.trick.title)}</b>${esc(w.theory.trick.text)}</div>
+  <div class="card"><h3>✏️ ДОМАШНЕЕ ЗАДАНИЕ</h3>
+   <div class="hw-list">${w.homework.map((q,i)=>{
+    const v = saved[i]||'';
+    const ok = v && norm(v) === norm(w.answers[i]);
+    return `<div class="hw" data-i="${i}">
+     <div class="q"><b>${i+1}.</b> ${esc(q)}</div>
+     <div class="hw-row">
+      <input type="text" placeholder="Твой ответ" value="${esc(v)}" oninput="liveSave(${w.id},${i},this.value)" autocomplete="off">
+      <button class="check" onclick="checkOne(${w.id},${i},this)">Проверить</button>
+     </div>
+     <div class="feedback ${ok?'ok':''}">${ok?'✓ Верно':''}</div>
+    </div>`;
+   }).join('')}</div>
+  </div>`;
+
+ if(st.ok === st.total) {
+   html += `<div class="boss-card">
+     <h4>👹 БОСС НЕДЕЛИ: ${w.title}</h4>
+     <p>Ты справился со всеми заданиями! Испытай себя в финальном тесте.</p>
+     <div class="hp-bar"><div class="hp-fill" style="width:100%"></div></div>
+     <button class="btn primary full" onclick="startBoss(${w.id})">⚔️ Сразиться с боссом</button>
+   </div>`;
+ } else {
+   html += `<div class="boss-card">
+     <h4>👹 БОСС НЕДЕЛИ: ${w.title}</h4>
+     <p>Реши все задания недели, чтобы открыть босса.</p>
+     <div class="hp-bar"><div class="hp-fill" style="width:${Math.round(st.ok/st.total*100)}%"></div></div>
+     <button class="btn ghost full" disabled>🔒 Босс закрыт (${st.ok}/${st.total})</button>
+   </div>`;
+ }
+
+ html += `<button class="btn primary full" onclick="checkAll(${w.id})">Проверить все ответы</button>`;
+ document.getElementById('week-content').innerHTML = html;
+ goPage('week');
+}
+
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+
+function liveSave(id,i,v){
+ if(!state.weekAnswers) state.weekAnswers = {};
+ state.weekAnswers[id] = state.weekAnswers[id]||{};
+ state.weekAnswers[id][i] = v;
+ S.set(state);
+}
+
+function checkOne(id,i,btn) {
+ const w = CURRICULUM.find(x=>x.id===id);
+ const hw = btn.closest('.hw');
+ const input = hw.querySelector('input');
+ const fb = hw.querySelector('.feedback');
+ const v = input.value;
+ if(!v.trim()){toast('Введи ответ','no');return}
+ const ok = norm(v) === norm(w.answers[i]);
+ input.classList.remove('ok','no'); input.classList.add(ok?'ok':'no');
+ fb.className = 'feedback ' + (ok?'ok':'no');
+ if(ok) {
+  fb.textContent = '✓ ' + pick(MOTIV_GOOD);
+  if(!hw.dataset.scored){
+    hw.dataset.scored='1';
+    state.points+=10; state.correct++; S.set(state);
+    const rect = btn.getBoundingClientRect();
+    showXpPop(rect.left + rect.width/2, rect.top, 10);
+  }
+  checkAchievements();
+ } else {
+  fb.textContent = '✗ ' + pick(MOTIV_BAD);
+ }
+ updateWeekDone(id);
+}
+
+function checkAll(id) {
+ const w = CURRICULUM.find(x=>x.id===id);
+ const hws = document.querySelectorAll('#week-content .hw');
+ let ok = 0;
+ hws.forEach((hw,i)=>{
+  const btn = hw.querySelector('.check');
+  checkOne(id,i,btn);
+  if(norm(hw.querySelector('input').value) === norm(w.answers[i])) ok++;
+ });
+ toast(`Верно: ${ok}/${w.homework.length}`, ok===w.homework.length?'ok':'');
+ updateWeekDone(id);
+}
+
+function updateWeekDone(id) {
+ const w = CURRICULUM.find(x=>x.id===id);
+ const {ok,total} = weekStatus(w);
+ if(ok===total && !state['wd_'+id]) {
+  state['wd_'+id] = 1; state.weeksDone++; state.points += 50; S.set(state);
+  toast('🏆 Неделя завершена! +50', 'ok');
+  fireConfetti(30);
+  checkAchievements();
+  renderSkillTree();
+ }
+}
+
+function pick(arr){return arr[Math.floor(Math.random()*arr.length)]}
+
+/* ============ TESTS ============ */
+let curTest=null, curTestAns={}, timerInt=null, timeLeft=0;
+function startTest(id) {
+ curTest = {id,...TESTS[id]}; curTestAns={}; timeLeft=curTest.time;
+ document.getElementById('test-title').textContent = curTest.title;
+ document.getElementById('test-subtitle').textContent = curTest.subtitle;
+ const c = document.getElementById('test-content');
+ c.innerHTML = curTest.questions.map((q,i)=>`
+  <div class="qcard" data-i="${i}">
+   <div class="qt"><b>${i+1}.</b> ${esc(q.t)}</div>
+   <div class="opts">${q.o.map(o=>`<button class="opt" onclick="pickOpt(${i},'${o[0]}',this)">${esc(o)}</button>`).join('')}</div>
+  </div>`).join('');
+ startTimer();
+ goPage('test');
+}
+function pickOpt(i,letter,btn){curTestAns[i]=letter;btn.parentElement.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));btn.classList.add('sel');}
+function startTimer(){stopTimer();timerInt=setInterval(()=>{timeLeft--;if(timeLeft<=0){stopTimer();finishTest();return}showTime();},1000);showTime();}
+function stopTimer(){if(timerInt){clearInterval(timerInt);timerInt=null}}
+function showTime(){const m=String(Math.floor(timeLeft/60)).padStart(2,'0'),s=String(timeLeft%60).padStart(2,'0');const el=document.getElementById('test-timer');el.classList.remove('warn','danger');if(timeLeft<60)el.classList.add('danger');else if(timeLeft<120)el.classList.add('warn');document.getElementById('test-time').textContent=`${m}:${s}`;}
+function finishTest(){stopTimer();if(!curTest)return;let ok=0;curTest.questions.forEach((q,i)=>{const card=document.querySelector(`.qcard[data-i="${i}"]`);if(!card)return;card.querySelectorAll('.opt').forEach(o=>{if(o.textContent.startsWith(q.a))o.classList.add('ok');else if(curTestAns[i]===o.textContent[0]&&curTestAns[i]!==q.a)o.classList.add('no');});if(curTestAns[i]===q.a)ok++;});const pts=ok*15;state.points+=pts;state.correct+=ok;S.set(state);toast(`✓ ${ok}/${curTest.questions.length} верно · +${pts}`,'ok');if(ok===curTest.questions.length)fireConfetti(40);checkAchievements();curTest=null;}
+
+/* ============================================================
+   ИГРЫ
+   ============================================================ */
+function renderGames() {
+ const gamesList = [
+  {id:'quick', em:'⚡', name:'Быстрый счёт', desc:'Умножение'},
+  {id:'sequence', em:'🔢', name:'Закономерность', desc:'4 типа'},
+  {id:'riddle', em:'🎲', name:'Угадай правило', desc:'8 правил'}
+ ];
+ const grids = ['games-grid','games-grid-full'];
+ grids.forEach(id => {
+  const el = document.getElementById(id);
+  if(el) el.innerHTML = gamesList.map(g =>
+   `<button class="game-card" onclick="startGame('${g.id}')">
+     <div class="em">${g.em}</div><b>${g.name}</b><span>${g.desc}</span>
+   </button>`
+  ).join('');
+ });
+}
+
+function startGame(type) {
+ const games = {
+  quick: initQuick,
+  sequence: initSequence,
+  riddle: initRiddle
+ };
+ if(!games[type]){toast('Игра не найдена','no');return}
+ state.games = (state.games||0)+1;
+ if(!state.gameStats) state.gameStats = {};
+ if(!state.gameStats[type]) state.gameStats[type] = {total:0, correct:0, best:0};
+ S.set(state);
+ games[type]();
+ goPage('game');
+ checkAchievements();
+}
+
+function initQuick() {
+ const c=document.getElementById('game-content');
+ let score=0, time=30, intr, total=0, correct=0;
+ c.innerHTML=`<div class="wk-hero"><span class="em">⚡</span><h2>Быстрый счёт</h2><p>Умножение двузначных на однозначные</p></div>
+  <div class="game-stage"><div class="score"><span>⏱️ <b id="gt">30</b>с</span><span>⭐ <b id="gs">0</b></span><span>📊 <b id="gtotal">0</b></span></div>
+   <div class="pq" id="gq"></div><div class="game-grid" id="gg"></div></div>`;
+ function next(){
+  const a=Math.floor(Math.random()*90)+10;
+  const b=Math.floor(Math.random()*9)+1;
+  const res=a*b;
+  document.getElementById('gq').textContent=`${a} × ${b} = ?`;
+  const opts=new Set([res]);
+  while(opts.size<4) opts.add(res + (Math.floor(Math.random()*21)-10) || res+1);
+  const arr = [...opts].sort(() => Math.random() - 0.5);
+  document.getElementById('gg').innerHTML=arr.map(v=>`<button class="g-opt" onclick="pickQ(${v},${res},this)">${v}</button>`).join('');
+ }
+ window.pickQ=(v,r,el)=>{
+  total++;
+  if(v===r){score++;correct++;state.points+=5;el.classList.add('ok')}
+  else{el.classList.add('no');time-=1}
+  document.getElementById('gs').textContent=score;
+  document.getElementById('gtotal').textContent=total;
+  setTimeout(next,250);
+ };
+ next();
+ intr=setInterval(()=>{
+  time--;document.getElementById('gt').textContent=time;
+  if(time<=0){clearInterval(intr);endGameWithStats('quick',score,total,correct)}
+ },1000);
+}
+
+function initSequence() {
+ const c=document.getElementById('game-content');
+ let score=0, rounds=8, r=0, total=0, correct=0;
+ c.innerHTML=`<div class="wk-hero"><span class="em">🔢</span><h2>Закономерность</h2><p>4 типа последовательностей</p></div>
+  <div class="game-stage"><div class="score"><span>📊 <b id="gr">0</b>/${rounds}</span><span>⭐ <b id="gs">0</b></span></div>
+   <div class="pq" id="gq" style="font-size:1.2rem"></div><div class="game-grid" id="gg"></div></div>`;
+ 
+ const sequenceTypes = [
+  {gen: () => {
+   const a=Math.floor(Math.random()*8)+1, d=Math.floor(Math.random()*4)+2;
+   return {seq:[a,a+d,a+2*d,a+3*d], ans:a+4*d, hint:'➕ Арифметическая'};
+  }},
+  {gen: () => {
+   const a=Math.floor(Math.random()*3)+1, q=Math.floor(Math.random()*3)+2;
+   return {seq:[a,a*q,a*q*q,a*q*q*q], ans:a*q*q*q*q, hint:'✖️ Геометрическая'};
+  }},
+  {gen: () => {
+   const s=Math.floor(Math.random()*5)+1;
+   return {seq:[s*s,(s+1)*(s+1),(s+2)*(s+2),(s+3)*(s+3)], ans:(s+4)*(s+4), hint:'🔲 Квадраты'};
+  }},
+  {gen: () => {
+   const a=Math.floor(Math.random()*3)+1, b=Math.floor(Math.random()*3)+2;
+   return {seq:[a,b,a+b,a+2*b], ans:2*a+3*b, hint:'🌀 Фибоначчи'};
+  }}
+ ];
+ 
+ function nxt(){
+  if(r>=rounds){endGameWithStats('sequence',score,total,correct);return}
+  r++;total++;document.getElementById('gr').textContent=r;
+  const type=sequenceTypes[Math.floor(Math.random()*sequenceTypes.length)];
+  const {seq,ans,hint}=type.gen();
+  document.getElementById('gq').innerHTML=seq.join(', ')+', ?<br><span style="font-size:.7rem;color:var(--ink-mute)">💡 '+hint+'</span>';
+  const opts=new Set([ans]);while(opts.size<4)opts.add(ans+Math.floor(Math.random()*11)-5);
+  const arr=[...opts].sort(()=>Math.random()-0.5);
+  document.getElementById('gg').innerHTML=arr.map(v=>`<button class="g-opt" onclick="pickS(${v},${ans},this)">${v}</button>`).join('');
+ }
+ window.pickS=(v,a,el)=>{
+  if(v===a){score++;correct++;state.points+=12;el.classList.add('ok')}else el.classList.add('no');
+  document.getElementById('gs').textContent=score;
+  setTimeout(nxt,400);
+ };
+ nxt();
+}
+
+function initRiddle() {
+ const c=document.getElementById('game-content');
+ let score=0, rounds=8, r=0, total=0, correct=0;
+ c.innerHTML=`<div class="wk-hero"><span class="em">🎲</span><h2>Угадай правило</h2><p>8 различных правил</p></div>
+  <div class="game-stage"><div class="score"><span>📊 <b id="gr">0</b>/${rounds}</span><span>⭐ <b id="gs">0</b></span></div>
+   <div class="pq" id="gq" style="font-size:1.1rem"></div><div class="game-grid" id="gg"></div></div>`;
+ 
+ const rules = [
+  {f:(a,b)=>a+b, t:'a + b'},
+  {f:(a,b)=>a*b, t:'a × b'},
+  {f:(a,b)=>a*b+a, t:'a×b + a'},
+  {f:(a,b)=>a*b-b, t:'a×b − b'},
+  {f:(a,b)=>(a+b)*2, t:'(a+b)×2'},
+  {f:(a,b)=>a*a+b, t:'a² + b'},
+  {f:(a,b)=>a+b*b, t:'a + b²'},
+  {f:(a,b)=>a*b+a+b, t:'a×b + a + b'}
+ ];
+ 
+ function nxt(){
+  if(r>=rounds){endGameWithStats('riddle',score,total,correct);return}
+  r++;total++;document.getElementById('gr').textContent=r;
+  const rule=rules[Math.floor(Math.random()*rules.length)];
+  const ex=[];for(let i=0;i<3;i++){const a=Math.floor(Math.random()*6)+2,b=Math.floor(Math.random()*6)+2;ex.push([a,b,rule.f(a,b)])}
+  const qa=Math.floor(Math.random()*6)+2,qb=Math.floor(Math.random()*6)+2;
+  const ans=rule.f(qa,qb);
+  document.getElementById('gq').innerHTML=ex.map(([a,b,r])=>`${a} ★ ${b} = ${r}`).join('<br>')+`<br><b style="color:var(--primary)">${qa} ★ ${qb} = ?</b>`;
+  const opts=new Set([ans]);while(opts.size<4)opts.add(ans+Math.floor(Math.random()*11)-5);
+  const arr=[...opts].sort(()=>Math.random()-0.5);
+  document.getElementById('gg').innerHTML=arr.map(v=>`<button class="g-opt" onclick="pickR(${v},${ans},this)">${v}</button>`).join('');
+ }
+ window.pickR=(v,a,el)=>{
+  if(v===a){score++;correct++;state.points+=15;el.classList.add('ok')}else el.classList.add('no');
+  document.getElementById('gs').textContent=score;
+  setTimeout(nxt,500);
+ };
+ nxt();
+}
+
+function endGameWithStats(gameId, score, total, correct) {
+ if(score>state.best)state.best=score;
+ if(!state.gameStats)state.gameStats={};
+ if(!state.gameStats[gameId])state.gameStats[gameId]={total:0,correct:0,best:0};
+ state.gameStats[gameId].total += total;
+ state.gameStats[gameId].correct += correct;
+ if(score>state.gameStats[gameId].best)state.gameStats[gameId].best=score;
+ S.set(state);
+ showGameResult(gameId,score,total,correct,state.gameStats[gameId].best);
+ checkAchievements();
+}
+
+function showGameResult(gameId, score, total, correct, best) {
+ const c = document.getElementById('game-content');
+ const pct = total > 0 ? Math.round((correct / total) * 100) : 0;
+ const msgs = [
+  {min:90, em:'🏆', text:'Олимпиадный уровень!'},
+  {min:70, em:'🌟', text:'Великолепно!'},
+  {min:50, em:'🎉', text:'Молодец!'},
+  {min:30, em:'💪', text:'Хороший результат!'},
+  {min:0, em:'📚', text:'Тренируйся дальше!'}
+ ];
+ const msg = msgs.find(m => pct >= m.min) || msgs[msgs.length-1];
+ let totalSolved=0, totalCorrect=0;
+ for(const key in state.gameStats){totalSolved+=state.gameStats[key].total||0;totalCorrect+=state.gameStats[key].correct||0;}
+ const totalPct=totalSolved>0?Math.round((totalCorrect/totalSolved)*100):0;
+ if(pct>=70)fireConfetti(25);
+ const resultHTML = `
+  <div class="game-result">
+   <div class="big">${msg.em} ${msg.text}</div>
+   <div style="font-size:.85rem;color:var(--ink-soft);margin-top:4px">${score} очков</div>
+   <div class="stat-grid">
+    <div class="stat-item"><div class="num">${correct}/${total}</div><div class="lbl">В этой игре</div></div>
+    <div class="stat-item"><div class="num">${pct}%</div><div class="lbl">Точность</div></div>
+    <div class="stat-item"><div class="num">${best||0}</div><div class="lbl">Лучший результат</div></div>
+    <div class="stat-item"><div class="num">${totalSolved}</div><div class="lbl">Всего решено</div></div>
+    <div class="stat-item"><div class="num">${totalPct}%</div><div class="lbl">Общая точность</div></div>
+   </div>
+   <button class="btn primary" style="margin-top:12px" onclick="goPage('games')">🎮 Другие игры</button>
+   <button class="btn ghost" style="margin-top:8px" onclick="startGame('${gameId}')">🔄 Играть снова</button>
+  </div>
+ `;
+ c.innerHTML += resultHTML;
+}
+
+function fireConfetti(count=30) {
+ const container=document.getElementById('confetti-container');
+ if(!container) return;
+ const colors=['#ffd166','#ff6b9d','#7cf0ff','#b693ff','#7af0a8','#ffb86b'];
+ for(let i=0;i<count;i++){
+  const el=document.createElement('div');
+  const size=Math.random()*6+4;
+  const color=colors[Math.floor(Math.random()*colors.length)];
+  Object.assign(el.style,{
+   position:'absolute',width:size+'px',height:size*0.6+'px',
+   background:color,borderRadius:'2px',
+   left:Math.random()*100+'%',top:'-10px',
+   opacity:1,transform:'rotate('+Math.random()*360+'deg)',
+   pointerEvents:'none',zIndex:999
+  });
+  container.appendChild(el);
+  const duration=Math.random()*1500+1000;
+  const dx=(Math.random()-0.5)*300;
+  const dy=Math.random()*400+200;
+  const rot=Math.random()*720-360;
+  if(el.animate){
+    el.animate([
+     {transform:'translate(0,0) rotate(0deg)',opacity:1},
+     {transform:'translate('+dx+'px,'+dy+'px) rotate('+rot+'deg)',opacity:0}
+    ],{duration:duration, easing:'cubic-bezier(.2,.8,.2,1)'}).onfinish=()=>el.remove();
+  } else {
+    setTimeout(()=>el.remove(), duration);
+  }
+ }
+}
+
+function updateHome() {
+ const total=CURRICULUM.length;
+ const done=CURRICULUM.filter(w=>{const{ok,total}=weekStatus(w);return ok===total;}).length;
+ const pct=Math.round((done/total)*100);
+ document.getElementById('progress-pct').textContent=pct+'%';
+ document.getElementById('progress-fill').style.width=pct+'%';
+ document.getElementById('progress-text').textContent=pct===0?'Начни обучение!':pct===100?'🎉 Курс пройден!':`Пройдено ${done} из ${total} недель`;
+ 
+ const firstIncomplete=CURRICULUM.find(w=>{const{ok,total}=weekStatus(w);return ok<total;});
+ const contBlock=document.getElementById('continue-block');
+ if(firstIncomplete){
+  document.getElementById('continue-text').textContent=`Неделя ${firstIncomplete.id}: ${firstIncomplete.title}`;
+  document.getElementById('continue-sub').textContent='Нажми, чтобы продолжить обучение';
+  contBlock.onclick=()=>openWeek(firstIncomplete.id);
+ } else if(done===total){
+  document.getElementById('continue-text').textContent='🎉 Ты прошёл все недели!';
+  document.getElementById('continue-sub').textContent='Молодец! Попробуй игры или тесты';
+  contBlock.onclick=()=>goPage('games');
+ } else {
+  document.getElementById('continue-text').textContent='Открой первую неделю';
+  document.getElementById('continue-sub').textContent='Нажми, чтобы продолжить';
+  contBlock.onclick=()=>openWeek(1);
+ }
+ 
+ const dailyTasks=[
+  {q:'Найди сумму: 1 + 2 + 3 + … + 50',a:'1275'},
+  {q:'Сколько будет 25% от 200?',a:'50'},
+  {q:'Какое число следующее: 2, 6, 12, 20, ?',a:'30'},
+  {q:'Сколько будет 3/4 + 1/2?',a:'1.25'},
+  {q:'Найди НОК чисел 6 и 8',a:'24'},
+  {q:'Сколько секунд в 2 часах?',a:'7200'},
+  {q:'Реши: 15 × 15 = ?',a:'225'},
+  {q:'Какое число пропущено: 3, 7, 15, 31, ?',a:'63'}
+ ];
+ const daily=dailyTasks[new Date().getDate()%dailyTasks.length];
+ document.getElementById('daily-text').textContent=daily.q;
+ document.getElementById('daily-sub').textContent='✏️ Напиши ответ в тетради';
+ window._dailyAnswer=daily.a;
+ 
+ const riddles=[
+  {q:'Что тяжелее: 1 кг пуха или 1 кг железа?',a:'Одинаково'},
+  {q:'Сколько концов у 10 палок?',a:'20'},
+  {q:'Что идёт, но никогда не стоит?',a:'Время'},
+  {q:'У семерых братьев по одной сестре. Сколько всего детей?',a:'8'},
+  {q:'Что можно приготовить, но нельзя съесть?',a:'Уроки'},
+  {q:'На руках 10 пальцев. Сколько пальцев на 10 руках?',a:'50'},
+  {q:'Что было завтра, а будет вчера?',a:'Сегодня'},
+  {q:'Сколько яиц можно съесть натощак?',a:'Одно'}
+ ];
+ const riddle=riddles[new Date().getDate()%riddles.length];
+ document.getElementById('riddle-text').textContent=riddle.q;
+ document.getElementById('riddle-sub').textContent='🧠 Подумай, прежде чем смотреть ответ';
+ window._riddleAnswer=riddle.a;
+ updateProfile();
+}
+
+function showDailyAnswer(){toast('Ответ: '+(window._dailyAnswer||'—'),'ok');}
+function showRiddleAnswer(){toast('Ответ: '+(window._riddleAnswer||'—'),'ok');}
+
+function checkAchievements() {
+ let changed=false;
+ ACHIEVEMENTS.forEach(a=>{
+  if(a.check(state)&&!state.doneAch.includes(a.id)){
+   state.doneAch.push(a.id);state.points+=25;changed=true;
+   toast(`🏆 ${a.name}!`,'ok');fireConfetti(30);
+  }
+ });
+ if(changed)S.set(state);
+}
+
+function renderAchieves() {
+ document.getElementById('st-pts').textContent=state.points;
+ document.getElementById('st-cor').textContent=state.correct;
+ document.getElementById('st-gm').textContent=state.games;
+ document.getElementById('st-best').textContent=state.best;
+ document.getElementById('ach-progress').textContent=`${state.doneAch.length}/${ACHIEVEMENTS.length} наград`;
+ document.getElementById('ach-grid').innerHTML=ACHIEVEMENTS.map(a=>{
+  const on=state.doneAch.includes(a.id);
+  return`<div class="ach ${on?'on':''}" title="${a.desc}"><div class="em">${a.em}</div><b>${a.name}</b></div>`;
+ }).join('');
+ renderLB();
+}
+
+function getLB(){ return LS.get('mathLB', []); }
+function setLB(x){ LS.set('mathLB', x); }
+function addLeaderFromInput(){
+ const n=document.getElementById('lb-name').value.trim();
+ if(!n){toast('Введи имя','no');return}
+ const lb=getLB();lb.push({n,s:state.points,d:new Date().toLocaleDateString('ru-RU')});
+ lb.sort((a,b)=>b.s-a.s);setLB(lb.slice(0,50));
+ document.getElementById('lb-name').value='';
+ renderLB();toast('✓ Сохранено','ok');
+}
+function renderLB(){
+ const lb=getLB();
+ if(!lb.length){document.getElementById('lb-list').innerHTML='<div style="text-align:center;padding:20px;color:var(--ink-mute)">Пока пусто 🏆</div>';return}
+ document.getElementById('lb-list').innerHTML=lb.map((l,i)=>{
+  const cls=i===0?'r1':i===1?'r2':i===2?'r3':'';
+  const m=i===0?'🥇':i===1?'🥈':i===2?'🥉':(i+1);
+  return`<div class="lb-row ${cls}"><div class="rk">${m}</div><div class="nm">${esc(l.n)}</div><div class="sc">⭐ ${l.s}</div></div>`;
+ }).join('');
+}
+
+function renderSkillTree() {
+ const tree = document.getElementById('skill-tree');
+ if(!tree) return;
+ const skills = CURRICULUM.map(w => {
+  const {ok, total} = weekStatus(w);
+  const done = ok === total;
+  return `<div class="skill-node ${done?'done':''}" title="${w.title}">
+    <div class="em">${w.emoji}</div>
+    <div>${w.title.split(' ')[0]}</div>
+  </div>`;
+ }).join('');
+ tree.innerHTML = skills;
+}
+
+function renderStreakCalendar() {
+ const cal = document.getElementById('streak-cal');
+ if(!cal) return;
+ const today = new Date();
+ let html = '';
+ for(let i = 6; i >= 0; i--) {
+  const d = new Date(today);
+  d.setDate(d.getDate() - i);
+  const key = d.toISOString().slice(0,10);
+  const on = (state.streakDays || []).includes(key);
+  const isToday = i === 0;
+  html += `<div class="streak-day ${on?'on':''} ${isToday?'today':''}">${d.getDate()}</div>`;
+ }
+ cal.innerHTML = html;
+ const big = document.getElementById('streak-big');
+ if(big) big.textContent = state.streak || 0;
+}
+
+function markStreakDay() {
+ try {
+  const today = new Date().toISOString().slice(0,10);
+  if(!state.streakDays) state.streakDays = [];
+  if(!state.streakDays.includes(today)) {
+   state.streakDays.push(today);
+   let streak = 0;
+   const d = new Date();
+   while(true) {
+    const key = d.toISOString().slice(0,10);
+    if(state.streakDays.includes(key)) { streak++; d.setDate(d.getDate()-1); }
+    else break;
+   }
+   state.streak = streak;
+   S.set(state);
+   renderStreakCalendar();
+  }
+ } catch(e){}
+}
+
+function renderLiveStats() {
+ const p = document.getElementById('ls-points');
+ const c = document.getElementById('ls-correct');
+ const g = document.getElementById('ls-games');
+ if(p) p.textContent = state.points;
+ if(c) c.textContent = state.correct;
+ if(g) g.textContent = state.games;
+}
+
+function showXpPop(x, y, amount) {
+ const el = document.createElement('div');
+ el.className = 'xp-pop';
+ el.textContent = '+' + amount + ' XP';
+ el.style.left = x + 'px';
+ el.style.top = y + 'px';
+ document.body.appendChild(el);
+ setTimeout(() => el.remove(), 1000);
+}
+
+function startBoss(weekId) {
+ const w = CURRICULUM.find(x => x.id === weekId);
+ if(!w) return;
+ const questions = w.homework.slice(0, 5).map((q, i) => ({
+  q: q,
+  a: w.answers[i]
+ }));
+ let hp = 100, score = 0, idx = 0;
+
+ const c = document.getElementById('game-content');
+ c.innerHTML = `
+  <div class="wk-hero"><span class="em">👹</span><h2>Босс: ${w.title}</h2><p>Ответь на 5 вопросов, чтобы победить</p></div>
+  <div class="boss-card">
+   <h4>👹 HP Босса</h4>
+   <div class="hp-bar"><div class="hp-fill" id="boss-hp" style="width:100%"></div></div>
+   <p id="boss-status">Босс ждёт твоего ответа...</p>
+  </div>
+  <div class="card" id="boss-q"></div>
+  <div id="boss-opts" style="display:flex;flex-direction:column;gap:8px"></div>
+ `;
+ goPage('game');
+
+ function showQ() {
+  if(idx >= questions.length || hp <= 0) {
+   endBoss();
+   return;
+  }
+  const q = questions[idx];
+  document.getElementById('boss-q').innerHTML = `<b>${idx+1}.</b> ${esc(q.q)}`;
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.placeholder = 'Твой ответ';
+  input.style.cssText = 'width:100%;padding:12px;border-radius:12px;background:var(--glass);border:1px solid var(--stroke);font-weight:700;margin-top:8px';
+  const btn = document.createElement('button');
+  btn.className = 'btn primary full';
+  btn.textContent = '⚔️ Атаковать';
+  btn.style.marginTop = '8px';
+  btn.onclick = () => {
+   const v = input.value.trim();
+   if(!v) { toast('Введи ответ', 'no'); return; }
+   if(norm(v) === norm(q.a)) {
+    hp -= 20; score++;
+    document.getElementById('boss-status').textContent = '💥 Попадание! Босс теряет 20 HP';
+    showXpPop(window.innerWidth/2, window.innerHeight/2, 20);
+   } else {
+    document.getElementById('boss-status').textContent = '🛡️ Промах! Правильный ответ: ' + q.a;
+   }
+   document.getElementById('boss-hp').style.width = Math.max(0, hp) + '%';
+   idx++;
+   setTimeout(showQ, 800);
+  };
+  const opts = document.getElementById('boss-opts');
+  opts.innerHTML = '';
+  opts.appendChild(input);
+  opts.appendChild(btn);
+ }
+
+ function endBoss() {
+  if(hp <= 0) {
+   state.points += 100;
+   S.set(state);
+   fireConfetti(50);
+   toast('🏆 Босс побеждён! +100 XP', 'ok');
+  } else {
+   toast('Босс выстоял. Попробуй ещё!', 'no');
+  }
+  goPage('menu');
+ }
+
+ showQ();
+}
+
+/* ============================================================
+   ДИАГРАММЫ
+   ============================================================ */
+function drawBarChart(canvasId, labels, values, maxValue, color='#ffd166') {
+ const canvas = document.getElementById(canvasId);
+ if(!canvas) return;
+ const dpr = window.devicePixelRatio || 1;
+ const rect = canvas.getBoundingClientRect();
+ canvas.width = rect.width * dpr;
+ canvas.height = rect.height * dpr;
+ const ctx = canvas.getContext('2d');
+ ctx.scale(dpr, dpr);
+ const W = rect.width, H = rect.height;
+ ctx.clearRect(0, 0, W, H);
+ const padL = 30, padB = 30, padT = 10, padR = 10;
+ const chartW = W - padL - padR;
+ const chartH = H - padT - padB;
+ const n = values.length;
+ const barW = Math.min(40, chartW / n * 0.7);
+ const gap = chartW / n;
+ const maxV = maxValue || Math.max(...values, 1);
+
+ ctx.strokeStyle = 'rgba(255,255,255,.15)';
+ ctx.lineWidth = 1;
+ ctx.beginPath();
+ ctx.moveTo(padL, padT);
+ ctx.lineTo(padL, H - padB);
+ ctx.lineTo(W - padR, H - padB);
+ ctx.stroke();
+
+ values.forEach((v, i) => {
+  const x = padL + gap * i + (gap - barW) / 2;
+  const h = (v / maxV) * chartH;
+  const y = H - padB - h;
+  const grad = ctx.createLinearGradient(0, y, 0, H - padB);
+  grad.addColorStop(0, color);
+  grad.addColorStop(1, 'rgba(255,159,107,.4)');
+  ctx.fillStyle = grad;
+  ctx.beginPath();
+  if(ctx.roundRect) ctx.roundRect(x, y, barW, h, 4); else ctx.rect(x, y, barW, h);
+  ctx.fill();
+  ctx.fillStyle = '#f6f1ff';
+  ctx.font = 'bold 11px Nunito, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText(v, x + barW / 2, y - 4);
+  ctx.fillStyle = 'rgba(246,241,255,.5)';
+  ctx.font = '10px Nunito, sans-serif';
+  ctx.fillText(labels[i], padL + gap * i + gap / 2, H - padB + 14);
+ });
+}
+
+function drawPieChart(canvasId, data) {
+ const canvas = document.getElementById(canvasId);
+ if(!canvas) return;
+ const dpr = window.devicePixelRatio || 1;
+ const rect = canvas.getBoundingClientRect();
+ canvas.width = rect.width * dpr;
+ canvas.height = rect.height * dpr;
+ const ctx = canvas.getContext('2d');
+ ctx.scale(dpr, dpr);
+ const W = rect.width, H = rect.height;
+ ctx.clearRect(0, 0, W, H);
+ const cx = W / 2, cy = H / 2;
+ const r = Math.min(W, H) / 2 - 20;
+ const total = data.reduce((s, d) => s + d.v, 0) || 1;
+ let start = -Math.PI / 2;
+ const colors = ['#ffd166', '#ff6b9d', '#7cf0ff', '#b693ff', '#7af0a8', '#ffb86b', '#9ad7ff', '#ff9fbf'];
+ data.forEach((d, i) => {
+  const angle = (d.v / total) * Math.PI * 2;
+  ctx.beginPath();
+  ctx.moveTo(cx, cy);
+  ctx.arc(cx, cy, r, start, start + angle);
+  ctx.closePath();
+  ctx.fillStyle = colors[i % colors.length];
+  ctx.fill();
+  ctx.strokeStyle = 'rgba(0,0,0,.2)';
+  ctx.lineWidth = 1;
+  ctx.stroke();
+  start += angle;
+ });
+ ctx.beginPath();
+ ctx.arc(cx, cy, r * 0.5, 0, Math.PI * 2);
+ ctx.fillStyle = 'rgba(11,11,42,.85)';
+ ctx.fill();
+ ctx.fillStyle = '#ffd166';
+ ctx.font = 'bold 18px Fraunces, serif';
+ ctx.textAlign = 'center';
+ ctx.textBaseline = 'middle';
+ ctx.fillText(total, cx, cy);
+}
+
+function drawLineChart(canvasId, values, color='#7af0a8') {
+ const canvas = document.getElementById(canvasId);
+ if(!canvas) return;
+ const dpr = window.devicePixelRatio || 1;
+ const rect = canvas.getBoundingClientRect();
+ canvas.width = rect.width * dpr;
+ canvas.height = rect.height * dpr;
+ const ctx = canvas.getContext('2d');
+ ctx.scale(dpr, dpr);
+ const W = rect.width, H = rect.height;
+ ctx.clearRect(0, 0, W, H);
+ const padL = 20, padB = 20, padT = 10, padR = 10;
+ const chartW = W - padL - padR;
+ const chartH = H - padT - padB;
+ const maxV = Math.max(...values, 1);
+ ctx.beginPath();
+ values.forEach((v, i) => {
+  const x = padL + (i / (values.length - 1 || 1)) * chartW;
+  const y = padT + chartH - (v / maxV) * chartH;
+  if(i === 0) ctx.moveTo(x, y);
+  else ctx.lineTo(x, y);
+ });
+ ctx.strokeStyle = color;
+ ctx.lineWidth = 2;
+ ctx.stroke();
+ values.forEach((v, i) => {
+  const x = padL + (i / (values.length - 1 || 1)) * chartW;
+  const y = padT + chartH - (v / maxV) * chartH;
+  ctx.beginPath();
+  ctx.arc(x, y, 3, 0, Math.PI * 2);
+  ctx.fillStyle = color;
+  ctx.fill();
+ });
+}
+
+function renderCharts() {
+ document.getElementById('an-pts').textContent = state.points;
+ document.getElementById('an-cor').textContent = state.correct;
+ document.getElementById('an-gm').textContent = state.games;
+ 
+ const weekLabels = CURRICULUM.map(w => 'Н' + w.id);
+ const weekValues = CURRICULUM.map(w => weekStatus(w).ok);
+ const weekTotal = CURRICULUM.map(w => w.homework.length);
+ setTimeout(() => {
+  try {
+   drawBarChart('chart-weeks', weekLabels, weekValues, Math.max(...weekTotal), '#ffd166');
+  } catch(e){}
+ }, 50);
+
+ setTimeout(() => {
+  try {
+   const gameData = Object.keys(state.gameStats || {}).map(k => ({
+    n: k, v: state.gameStats[k].total || 0
+   })).filter(d => d.v > 0).sort((a,b) => b.v - a.v).slice(0, 6);
+   if(gameData.length === 0) gameData.push({n: '—', v: 1});
+   drawPieChart('chart-games', gameData.map(d => ({n: d.n, v: d.v})));
+  } catch(e){}
+ }, 50);
+
+ setTimeout(() => {
+  try {
+   const arr = [];
+   for(let i = 29; i >= 0; i--) {
+    const d = new Date();
+    d.setDate(d.getDate() - i);
+    const key = d.toISOString().slice(0,10);
+    arr.push((state.streakDays || []).includes(key) ? 1 : 0);
+   }
+   drawLineChart('chart-streak', arr, '#7af0a8');
+  } catch(e){}
+ }, 50);
+
+ setTimeout(() => {
+  const el = document.getElementById('an-ach');
+  if(el) {
+   el.innerHTML = state.doneAch.length === 0 
+    ? 'Пока нет достижений — начни заниматься!'
+    : `Получено <b style="color:var(--primary)">${state.doneAch.length}</b> из ${ACHIEVEMENTS.length} наград.<br>` +
+      ACHIEVEMENTS.filter(a => state.doneAch.includes(a.id)).map(a => a.em + ' ' + a.name).join(' · ');
+  }
+ }, 50);
+}
+
+/* ============ INIT ============ */
+try { renderHome(); } catch(e){}
+try { renderMenu(); } catch(e){}
+try { renderGames(); } catch(e){}
+try { updateBars(); } catch(e){}
+try { updateHome(); } catch(e){}
+try { renderSkillTree(); } catch(e){}
+try { renderStreakCalendar(); } catch(e){}
+try { renderLiveStats(); } catch(e){}
+try { markStreakDay(); } catch(e){}
+</script>
+</body>
+</html>
